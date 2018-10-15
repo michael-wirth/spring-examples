@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<bindings
+        xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns="http://java.sun.com/xml/ns/jaxb" version="2.1">
+    <bindings schemaLocation="simpleTypes.xsd">
+        <bindings node="//xsd:simpleType[@name='StringType']">
+            <xjc:javaType name="com.adcubum.typelibrary.text.StringType"
+                          adapter="com.adcubum.apibridge.jaxb.adapter.typelibrary.core.XmlStringTypeAdapter"/>
+        </bindings>
+        <bindings node="//xsd:simpleType[@name='IntegerType']">
+            <xjc:javaType name="com.adcubum.typelibrary.number.IntegerType"
+                          adapter="com.adcubum.apibridge.jaxb.adapter.typelibrary.core.XmlIntegerTypeAdapter"/>
+        </bindings>
+        <bindings node="//xsd:simpleType[@name='DecimalType']">
+            <xjc:javaType name="com.adcubum.typelibrary.number.DecimalType"
+                          adapter="com.adcubum.apibridge.jaxb.adapter.typelibrary.core.XmlDecimalTypeAdapter"/>
+        </bindings>
+        <bindings node="//xsd:simpleType[@name='BooleanType']">
+            <xjc:javaType name="com.adcubum.typelibrary.BooleanType"
+                          adapter="com.adcubum.apibridge.jaxb.adapter.typelibrary.core.XmlBooleanTypeAdapter"/>
+        </bindings>
+        <bindings node="//xsd:simpleType[@name='DateType']">
+            <xjc:javaType name="com.adcubum.typelibrary.date.DateType"
+                          adapter="com.adcubum.apibridge.jaxb.adapter.typelibrary.core.XmlDateTypeAdapter"/>
+        </bindings>
+        <bindings node="//xsd:simpleType[@name='DateTimeType']">
+            <xjc:javaType name="com.adcubum.typelibrary.date.DateTimeType"
+                          adapter="com.adcubum.apibridge.jaxb.adapter.typelibrary.core.XmlDateTimeTypeAdapter"/>
+        </bindings>
+        <bindings node="//xsd:simpleType[@name='TimestampType']">
+            <xjc:javaType name="com.adcubum.typelibrary.date.TimestampType"
+                          adapter="com.adcubum.apibridge.jaxb.adapter.typelibrary.core.XmlTimestampTypeAdapter"/>
+        </bindings>
+    </bindings>
+</bindings>

@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="urn:com:adcubum:syrius:api:common:types:v_1_0"
+            xmlns:tns="urn:com:adcubum:syrius:api:common:types:v_1_0"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:st="urn:com:adcubum:syrius:api:common:simpleTypes:v_1_0"
+            xmlns:ct="urn:com:adcubum:syrius:api:common:codes:v_1_0"
+            elementFormDefault="qualified"
+>
+
+    <xsd:import namespace="urn:com:adcubum:syrius:api:common:simpleTypes:v_1_0" schemaLocation="../../types/v_1_0/simpleTypes.xsd"/>
+    <xsd:import namespace="urn:com:adcubum:syrius:api:common:codes:v_1_0" schemaLocation="../../codes/v_1_0/codes.xsd"/>
+
+    <!-- Localized Attributes - common -->
+    <xsd:complexType name="WsLocalizedTextType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">
+                Textelement mit (sprachlich) lokalisiertem Wert.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="shortText" type="st:StringType">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        verkürzte Darstellung des Textwertes.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="middleText" type="st:StringType">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Darstellung des Textwertes.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="longText" type="st:StringType" minOccurs="0">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Optionale lange Darstellung des Textwertes.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="WsCustomAttributeType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">
+                Objekt zur Darstellung beliebiger Attribute.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="attrId" type="st:StringType">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Id des Attributes
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="WsCustomAttributeStringType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">
+                Objekt zur Darstellung beliebiger String-Attribute.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="tns:WsCustomAttributeType">
+                <xsd:sequence>
+                    <xsd:element name="attrValue" type="st:StringType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                Der Wert des Attributes. Dieser kann leer sein.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="WsCustomAttributeIntegerType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">
+                Objekt zur Darstellung beliebiger Integer-Attribute.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="tns:WsCustomAttributeType">
+                <xsd:sequence>
+                    <xsd:element name="attrValue" type="st:IntegerType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                Der Wert des Attributes. Dieser kann leer sein.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+    <xsd:complexType name="WsCustomAttributeDecimalType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">
+                Objekt zur Darstellung beliebiger Decimal-Attribute.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="tns:WsCustomAttributeType">
+                <xsd:sequence>
+                    <xsd:element name="attrValue" type="st:DecimalType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                Der Wert des Attributes. Dieser kann leer sein.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+    <xsd:complexType name="WsCustomAttributeBooleanType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">
+                Objekt zur Darstellung beliebiger Boolean-Attribute.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="tns:WsCustomAttributeType">
+                <xsd:sequence>
+                    <xsd:element name="attrValue" type="st:BooleanType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                Der Wert des Attributes. Dieser kann leer sein.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+    <xsd:complexType name="WsCustomAttributeDateType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">
+                Objekt zur Darstellung beliebiger Date-Attribute.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="tns:WsCustomAttributeType">
+                <xsd:sequence>
+                    <xsd:element name="attrValue" type="st:DateType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                Der Wert des Attributes. Dieser kann leer sein.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+    <xsd:complexType name="WsCustomAttributeDateTimeType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">
+                Objekt zur Darstellung beliebiger DateTime-Attribute.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="tns:WsCustomAttributeType">
+                <xsd:sequence>
+                    <xsd:element name="attrValue" type="st:DateTimeType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                Der Wert des Attributes. Dieser kann leer sein.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+    <xsd:complexType name="WsCustomAttributeTimestampType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">
+                Objekt zur Darstellung beliebiger Timestamp-Attribute.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="tns:WsCustomAttributeType">
+                <xsd:sequence>
+                    <xsd:element name="attrValue" type="st:TimestampType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                Der Wert des Attributes. Dieser kann leer sein.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="WsCustomAttributeCodeType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">
+                Objekt zur Darstellung beliebiger Code-Attribute.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="tns:WsCustomAttributeType">
+                <xsd:sequence>
+                    <xsd:element name="attrValue" type="ct:WsCodeType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                Der Wert des Attributes. Dieser kann leer sein.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="WsHistObjectType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">
+                Abbildung des fachlichen Zustandes zwischen zwei Zeitpunkten eines Datenobjekts, das eine definierte Gesamtlebensdauer hat.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="tns:WsLifecycleObjectType">
+                <xsd:sequence>
+                    <xsd:element name="stateFrom" type="st:DateType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                Beginn des historisierten Zustands des Objekts. Wird kein Zeitpunkt angegeben, gelten die Regelungen des
+                                zugrundeliegenden DateTypes.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="stateUpto" type="st:DateType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                Ende des historisierten Zustands des Objekts. Wird kein Zeitpunkt angegeben, gelten die Regelungen des
+                                zugrundeliegenden DateTypes.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="WsLifecycleObjectType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">
+                Abbildung eines Datenobjekts mit einer definierten Lebensdauer.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="tns:WsDataObjectType">
+                <xsd:sequence>
+                    <xsd:element name="gueltAb" type="st:DateType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                Beginn der Lebensdauer eines Objekts. Wird kein Zeitpunkt angegeben, gelten die Regelungen des
+                                zugrundeliegenden DateTypes.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="gueltBis" type="st:DateType" minOccurs="0">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                Ende der Lebensdauer eines Objekts. Wird kein Zeitpunkt angegeben, gelten die Regelungen des zugrundeliegenden
+                                DateTypes.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="WsDataObjectType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">
+                Abbildung eines Objekts, das eine unbestimmte Anzahl an Attributen beinhalten kann
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="aenderungAm" type="st:TimestampType">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Zeitpunkt, zu dem die letzte Änderung des Objekts vorgenomme wurde
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="aenderungDurch" type="st:StringType">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Angabe durch welchen Benutzer die letzte Änderung vorgenommen wurde.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="version" type="st:TimestampType">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        aktuelle Version des Datenobjekts. Stellt den Zeitstempel des letzten Leseaufrufs da.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="customAttribute" type="tns:WsCustomAttributeType" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation>
+                        Auflistung der im Objekt enthaltenen Attribute.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="WsEmptyParamterType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">
+                leerer Parameter.
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:complexType>
+
+</xsd:schema>

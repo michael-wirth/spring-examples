@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<bindings
+        xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns="http://java.sun.com/xml/ns/jaxb" version="2.1">
+    <bindings schemaLocation="extendedTypes.xsd">
+        <bindings node="//xsd:simpleType[@name='AlphanumericStringType']">
+            <xjc:javaType name="com.adcubum.typelibrary.text.AlphanumericStringType"
+                          adapter="com.adcubum.apibridge.jaxb.adapter.typelibrary.core.XmlAlphanumericStringTypeAdapter"/>
+        </bindings>
+        <bindings node="//xsd:simpleType[@name='PositiveIntegerType']">
+            <xjc:javaType name="com.adcubum.typelibrary.number.PositiveIntegerType"
+                          adapter="com.adcubum.apibridge.jaxb.adapter.typelibrary.core.XmlPositiveIntegerTypeAdapter"/>
+        </bindings>
+        <bindings node="//xsd:simpleType[@name='NegativeIntegerType']">
+            <xjc:javaType name="com.adcubum.typelibrary.number.NegativeIntegerType"
+                          adapter="com.adcubum.apibridge.jaxb.adapter.typelibrary.core.XmlNegativeIntegerTypeAdapter"/>
+        </bindings>
+    </bindings>
+</bindings>

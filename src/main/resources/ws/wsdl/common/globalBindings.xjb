@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<bindings
+        xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns="http://java.sun.com/xml/ns/jaxb" version="2.1">
+    <globalBindings>
+        <xjc:serializable/>
+        <xjc:javaType name="java.time.OffsetDateTime" xmlType="xs:dateTime" adapter="com.migesok.jaxb.adapter.javatime.OffsetDateTimeXmlAdapter"/>
+        <xjc:javaType name="java.time.LocalDate" xmlType="xs:date" adapter="com.migesok.jaxb.adapter.javatime.LocalDateXmlAdapter"/>
+    </globalBindings>
+</bindings>

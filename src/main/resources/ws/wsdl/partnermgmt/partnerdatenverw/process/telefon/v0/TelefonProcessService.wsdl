@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="TelefonProcessService"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  targetNamespace="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:process:telefon:v0"
+                  xmlns:tns="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:process:telefon:v0"
+                  xmlns:pa="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:process:telefon:v0:schema"
+                  xmlns:flt="urn:com:adcubum:syrius:api:common:faults:v_1_0"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/">
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:process:telefon:v0:schema" schemaLocation="schema/TelefonProcessService.xsd"/>
+            <xsd:import namespace="urn:com:adcubum:syrius:api:common:faults:v_1_0" schemaLocation="../../../../../common/faults/v_1_0/faults.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="CreateTelefonForPartnerRequestMessage">
+        <wsdl:part name="Request" element="pa:createTelefonForPartnerRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CreateTelefonForPartnerResponseMessage">
+        <wsdl:part name="Response" element="pa:createTelefonForPartnerResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ChangeTelefonRequestMessage">
+        <wsdl:part name="Request" element="pa:changeTelefonRequest"/>
+    </wsdl:message>
+    <wsdl:message name="ChangeTelefonResponseMessage">
+        <wsdl:part name="Response" element="pa:changeTelefonResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ApiFault">
+        <wsdl:part name="fault" element="flt:apiFaultInfo"/>
+    </wsdl:message>
+    <wsdl:portType name="TelefonProcessServicePortType">
+        <wsdl:operation name="createTelefonForPartner">
+            <wsdl:documentation>Erstellt eine neue Telefonnummer zu einem Partner.</wsdl:documentation>
+            <wsdl:input name="CreateTelefonForPartnerRequest" message="tns:CreateTelefonForPartnerRequestMessage"/>
+            <wsdl:output name="CreateTelefonForPartnerResponse" message="tns:CreateTelefonForPartnerResponseMessage"/>
+            <wsdl:fault name="ApiFault" message="tns:ApiFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="changeTelefon">
+            <wsdl:documentation>Ändert eine Telefonnummer.</wsdl:documentation>
+            <wsdl:input name="ChangeTelefonRequest" message="tns:ChangeTelefonRequestMessage"/>
+            <wsdl:output name="ChangeTelefonResponse" message="tns:ChangeTelefonResponseMessage"/>
+            <wsdl:fault name="ApiFault" message="tns:ApiFault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="TelefonProcessServiceBinding" type="tns:TelefonProcessServicePortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="createTelefonForPartner">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="CreateTelefonForPartnerRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreateTelefonForPartnerResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ApiFault">
+                <soap:fault name="ApiFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="changeTelefon">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="ChangeTelefonRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="ChangeTelefonResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ApiFault">
+                <soap:fault name="ApiFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="TelefonProcessService_v0">
+        <wsdl:port name="TelefonProcessService" binding="tns:TelefonProcessServiceBinding">
+            <soap:address location="https://example.com/TelefonProcessService_v0"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

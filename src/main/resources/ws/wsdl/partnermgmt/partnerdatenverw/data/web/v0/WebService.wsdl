@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="WebService"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  targetNamespace="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:data:web:v0"
+                  xmlns:tns="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:data:web:v0"
+                  xmlns:pa="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:data:web:v0:schema"
+                  xmlns:flt="urn:com:adcubum:syrius:api:common:faults:v_1_0"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/">
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:data:web:v0:schema" schemaLocation="schema/WebService.xsd"/>
+            <xsd:import namespace="urn:com:adcubum:syrius:api:common:faults:v_1_0" schemaLocation="../../../../../common/faults/v_1_0/faults.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="GetWebRequestMessage">
+        <wsdl:part name="Request" element="pa:getWebRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetWebResponseMessage">
+        <wsdl:part name="Response" element="pa:getWebResponse"/>
+    </wsdl:message>
+    <wsdl:message name="GetPartnerWebRequestMessage">
+        <wsdl:part name="Request" element="pa:getPartnerWebRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetPartnerWebResponseMessage">
+        <wsdl:part name="Response" element="pa:getPartnerWebResponse"/>
+    </wsdl:message>
+    <wsdl:message name="GetAdresseWebRequestMessage">
+        <wsdl:part name="Request" element="pa:getAdresseWebRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetAdresseWebResponseMessage">
+        <wsdl:part name="Response" element="pa:getAdresseWebResponse"/>
+    </wsdl:message>
+    <wsdl:message name="GetLeistungserbringerWebRequestMessage">
+        <wsdl:part name="Request" element="pa:getLeistungserbringerWebRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetLeistungserbringerWebResponseMessage">
+        <wsdl:part name="Response" element="pa:getLeistungserbringerWebResponse"/>
+    </wsdl:message>
+    <wsdl:message name="GetOrganisationseinheitWebRequestMessage">
+        <wsdl:part name="Request" element="pa:getOrganisationseinheitWebRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetOrganisationseinheitWebResponseMessage">
+        <wsdl:part name="Response" element="pa:getOrganisationseinheitWebResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ApiFault">
+        <wsdl:part name="fault" element="flt:apiFaultInfo"/>
+    </wsdl:message>
+    <wsdl:portType name="WebServicePortType">
+        <wsdl:operation name="getWeb">
+            <wsdl:documentation>Liefert für einen technischen Webschlüssel die Daten der zugehörigen Web-Adresse.</wsdl:documentation>
+            <wsdl:input name="GetWebRequest" message="tns:GetWebRequestMessage"/>
+            <wsdl:output name="GetWebResponse" message="tns:GetWebResponseMessage"/>
+            <wsdl:fault name="ApiFault" message="tns:ApiFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="getPartnerWeb">
+            <wsdl:documentation>Liefert für einen technischen Partnerschlüssel die Daten der dazugehörenden Web-Adressen.</wsdl:documentation>
+            <wsdl:input name="GetPartnerWebRequest" message="tns:GetPartnerWebRequestMessage"/>
+            <wsdl:output name="GetPartnerWebResponse" message="tns:GetPartnerWebResponseMessage"/>
+            <wsdl:fault name="ApiFault" message="tns:ApiFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="getAdresseWeb">
+            <wsdl:documentation>Liefert für einen technischen Adressschlüssel die Daten aller dazugehörenden Web-Adressen.</wsdl:documentation>
+            <wsdl:input name="GetAdresseWebRequest" message="tns:GetAdresseWebRequestMessage"/>
+            <wsdl:output name="GetAdresseWebResponse" message="tns:GetAdresseWebResponseMessage"/>
+            <wsdl:fault name="ApiFault" message="tns:ApiFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="getLeistungserbringerWeb">
+            <wsdl:documentation>Liefert für einen technischen Leistungserbringerschlüssel die Daten der dazugehörenden Web-Adressen.</wsdl:documentation>
+            <wsdl:input name="GetLeistungserbringerWebRequest" message="tns:GetLeistungserbringerWebRequestMessage"/>
+            <wsdl:output name="GetLeistungserbringerWebResponse" message="tns:GetLeistungserbringerWebResponseMessage"/>
+            <wsdl:fault name="ApiFault" message="tns:ApiFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="getOrganisationseinheitWeb">
+            <wsdl:documentation>Liefert für einen technischen Organisationseinheitschlüssel die Daten der dazugehörenden Web-Adressen.</wsdl:documentation>
+            <wsdl:input name="GetOrganisationseinheitWebRequest" message="tns:GetOrganisationseinheitWebRequestMessage"/>
+            <wsdl:output name="GetOrganisationseinheitWebResponse" message="tns:GetOrganisationseinheitWebResponseMessage"/>
+            <wsdl:fault name="ApiFault" message="tns:ApiFault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="WebServiceBinding" type="tns:WebServicePortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getWeb">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="GetWebRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetWebResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ApiFault">
+                <soap:fault name="ApiFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getPartnerWeb">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="GetPartnerWebRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetPartnerWebResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ApiFault">
+                <soap:fault name="ApiFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAdresseWeb">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="GetAdresseWebRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetAdresseWebResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ApiFault">
+                <soap:fault name="ApiFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getLeistungserbringerWeb">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="GetLeistungserbringerWebRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetLeistungserbringerWebResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ApiFault">
+                <soap:fault name="ApiFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getOrganisationseinheitWeb">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="GetOrganisationseinheitWebRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetOrganisationseinheitWebResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ApiFault">
+                <soap:fault name="ApiFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="WebService_v0">
+        <wsdl:port name="WebService" binding="tns:WebServiceBinding">
+            <soap:address location="https://example.com/WebService_v0"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

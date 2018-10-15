@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="EmailDefService"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  targetNamespace="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:data:emaildef:v0"
+                  xmlns:tns="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:data:emaildef:v0"
+                  xmlns:pa="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:data:emaildef:v0:schema"
+                  xmlns:flt="urn:com:adcubum:syrius:api:common:faults:v_1_0"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/">
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:data:emaildef:v0:schema" schemaLocation="schema/EmailDefService.xsd"/>
+            <xsd:import namespace="urn:com:adcubum:syrius:api:common:faults:v_1_0" schemaLocation="../../../../../common/faults/v_1_0/faults.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="GetEmailDefRequestMessage">
+        <wsdl:part name="Request" element="pa:getEmailDefRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetEmailDefResponseMessage">
+        <wsdl:part name="Response" element="pa:getEmailDefResponse"/>
+    </wsdl:message>
+    <wsdl:message name="GetAllEmailDefRequestMessage">
+        <wsdl:part name="Request" element="pa:getAllEmailDefRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetAllEmailDefResponseMessage">
+        <wsdl:part name="Response" element="pa:getAllEmailDefResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ReadL10nAttributesEmailDefRequestMessage">
+        <wsdl:part name="Request" element="pa:readL10nAttributesEmailDefRequest"/>
+    </wsdl:message>
+    <wsdl:message name="ReadL10nAttributesEmailDefResponseMessage">
+        <wsdl:part name="Response" element="pa:readL10nAttributesEmailDefResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ReadAllL10nAttributesEmailDefRequestMessage">
+        <wsdl:part name="Request" element="pa:readAllL10nAttributesEmailDefRequest"/>
+    </wsdl:message>
+    <wsdl:message name="ReadAllL10nAttributesEmailDefResponseMessage">
+        <wsdl:part name="Response" element="pa:readAllL10nAttributesEmailDefResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ApiFault">
+        <wsdl:part name="fault" element="flt:apiFaultInfo"/>
+    </wsdl:message>
+    <wsdl:portType name="EmailDefServicePortType">
+        <wsdl:operation name="getEmailDef">
+            <wsdl:documentation>Liefert für einen technischen Emaildefschlüssel die Daten der zugehörigen E-Mail-Definition zurück.</wsdl:documentation>
+            <wsdl:input name="GetEmailDefRequest" message="tns:GetEmailDefRequestMessage"/>
+            <wsdl:output name="GetEmailDefResponse" message="tns:GetEmailDefResponseMessage"/>
+            <wsdl:fault name="ApiFault" message="tns:ApiFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="getAllEmailDef">
+            <wsdl:documentation>Liefert für ein Datum alle E-Mail-Definitionen zurück.</wsdl:documentation>
+            <wsdl:input name="GetAllEmailDefRequest" message="tns:GetAllEmailDefRequestMessage"/>
+            <wsdl:output name="GetAllEmailDefResponse" message="tns:GetAllEmailDefResponseMessage"/>
+            <wsdl:fault name="ApiFault" message="tns:ApiFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="readL10nAttributesEmailDef">
+            <wsdl:documentation>Liefert für einen technischen Emaildefschlüssel die Bezeichnung der zugehörigen E-Mail-Definition zurück.</wsdl:documentation>
+            <wsdl:input name="ReadL10nAttributesEmailDefRequest" message="tns:ReadL10nAttributesEmailDefRequestMessage"/>
+            <wsdl:output name="ReadL10nAttributesEmailDefResponse" message="tns:ReadL10nAttributesEmailDefResponseMessage"/>
+            <wsdl:fault name="ApiFault" message="tns:ApiFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="readAllL10nAttributesEmailDef">
+            <wsdl:documentation>Liefert alle Bezeichnungen von E-Mail-Definitionen zurück.</wsdl:documentation>
+            <wsdl:input name="ReadAllL10nAttributesEmailDefRequest" message="tns:ReadAllL10nAttributesEmailDefRequestMessage"/>
+            <wsdl:output name="ReadAllL10nAttributesEmailDefResponse" message="tns:ReadAllL10nAttributesEmailDefResponseMessage"/>
+            <wsdl:fault name="ApiFault" message="tns:ApiFault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="EmailDefServiceBinding" type="tns:EmailDefServicePortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getEmailDef">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="GetEmailDefRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetEmailDefResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ApiFault">
+                <soap:fault name="ApiFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAllEmailDef">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="GetAllEmailDefRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetAllEmailDefResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ApiFault">
+                <soap:fault name="ApiFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="readL10nAttributesEmailDef">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="ReadL10nAttributesEmailDefRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="ReadL10nAttributesEmailDefResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ApiFault">
+                <soap:fault name="ApiFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="readAllL10nAttributesEmailDef">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="ReadAllL10nAttributesEmailDefRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="ReadAllL10nAttributesEmailDefResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ApiFault">
+                <soap:fault name="ApiFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="EmailDefService_v0">
+        <wsdl:port name="EmailDefService" binding="tns:EmailDefServiceBinding">
+            <soap:address location="https://example.com/EmailDefService_v0"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

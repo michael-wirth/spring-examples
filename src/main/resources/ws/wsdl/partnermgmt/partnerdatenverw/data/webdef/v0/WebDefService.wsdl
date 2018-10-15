@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="WebDefService"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  targetNamespace="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:data:webdef:v0"
+                  xmlns:tns="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:data:webdef:v0"
+                  xmlns:pa="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:data:webdef:v0:schema"
+                  xmlns:flt="urn:com:adcubum:syrius:api:common:faults:v_1_0"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/">
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:data:webdef:v0:schema" schemaLocation="schema/WebDefService.xsd"/>
+            <xsd:import namespace="urn:com:adcubum:syrius:api:common:faults:v_1_0" schemaLocation="../../../../../common/faults/v_1_0/faults.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="GetWebDefRequestMessage">
+        <wsdl:part name="Request" element="pa:getWebDefRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetWebDefResponseMessage">
+        <wsdl:part name="Response" element="pa:getWebDefResponse"/>
+    </wsdl:message>
+    <wsdl:message name="GetAllWebDefRequestMessage">
+        <wsdl:part name="Request" element="pa:getAllWebDefRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetAllWebDefResponseMessage">
+        <wsdl:part name="Response" element="pa:getAllWebDefResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ReadL10nAttributesWebDefRequestMessage">
+        <wsdl:part name="Request" element="pa:readL10nAttributesWebDefRequest"/>
+    </wsdl:message>
+    <wsdl:message name="ReadL10nAttributesWebDefResponseMessage">
+        <wsdl:part name="Response" element="pa:readL10nAttributesWebDefResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ReadAllL10nAttributesWebDefRequestMessage">
+        <wsdl:part name="Request" element="pa:readAllL10nAttributesWebDefRequest"/>
+    </wsdl:message>
+    <wsdl:message name="ReadAllL10nAttributesWebDefResponseMessage">
+        <wsdl:part name="Response" element="pa:readAllL10nAttributesWebDefResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ApiFault">
+        <wsdl:part name="fault" element="flt:apiFaultInfo"/>
+    </wsdl:message>
+    <wsdl:portType name="WebDefServicePortType">
+        <wsdl:operation name="getWebDef">
+            <wsdl:documentation>Liefert für einen technischen Webdefschlüssel die Daten der zugehörigen E-Mail-Definition zurück.</wsdl:documentation>
+            <wsdl:input name="GetWebDefRequest" message="tns:GetWebDefRequestMessage"/>
+            <wsdl:output name="GetWebDefResponse" message="tns:GetWebDefResponseMessage"/>
+            <wsdl:fault name="ApiFault" message="tns:ApiFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="getAllWebDef">
+            <wsdl:documentation>Liefert für ein Datum alle E-Mail-Definitionen zurück.</wsdl:documentation>
+            <wsdl:input name="GetAllWebDefRequest" message="tns:GetAllWebDefRequestMessage"/>
+            <wsdl:output name="GetAllWebDefResponse" message="tns:GetAllWebDefResponseMessage"/>
+            <wsdl:fault name="ApiFault" message="tns:ApiFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="readL10nAttributesWebDef">
+            <wsdl:documentation>Liefert für einen technischen Webdefschlüssel die Bezeichnung der zugehörigen E-Mail-Definition zurück.</wsdl:documentation>
+            <wsdl:input name="ReadL10nAttributesWebDefRequest" message="tns:ReadL10nAttributesWebDefRequestMessage"/>
+            <wsdl:output name="ReadL10nAttributesWebDefResponse" message="tns:ReadL10nAttributesWebDefResponseMessage"/>
+            <wsdl:fault name="ApiFault" message="tns:ApiFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="readAllL10nAttributesWebDef">
+            <wsdl:documentation>Liefert alle Bezeichnungen von E-Mail-Definitionen zurück.</wsdl:documentation>
+            <wsdl:input name="ReadAllL10nAttributesWebDefRequest" message="tns:ReadAllL10nAttributesWebDefRequestMessage"/>
+            <wsdl:output name="ReadAllL10nAttributesWebDefResponse" message="tns:ReadAllL10nAttributesWebDefResponseMessage"/>
+            <wsdl:fault name="ApiFault" message="tns:ApiFault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="WebDefServiceBinding" type="tns:WebDefServicePortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getWebDef">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="GetWebDefRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetWebDefResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ApiFault">
+                <soap:fault name="ApiFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAllWebDef">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="GetAllWebDefRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetAllWebDefResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ApiFault">
+                <soap:fault name="ApiFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="readL10nAttributesWebDef">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="ReadL10nAttributesWebDefRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="ReadL10nAttributesWebDefResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ApiFault">
+                <soap:fault name="ApiFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="readAllL10nAttributesWebDef">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="ReadAllL10nAttributesWebDefRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="ReadAllL10nAttributesWebDefResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ApiFault">
+                <soap:fault name="ApiFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="WebDefService_v0">
+        <wsdl:port name="WebDefService" binding="tns:WebDefServiceBinding">
+            <soap:address location="https://example.com/WebDefService_v0"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

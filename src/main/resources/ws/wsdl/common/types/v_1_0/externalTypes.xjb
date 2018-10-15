@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<bindings
+        xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns="http://java.sun.com/xml/ns/jaxb" version="2.1">
+    <bindings schemaLocation="externalTypes.xsd">
+        <bindings node="//xsd:simpleType[@name='SwiftBicType']">
+            <xjc:javaType name="com.adcubum.typelibrary.external.finance.swift.SwiftBicType"
+                          adapter="com.adcubum.apibridge.jaxb.adapter.typelibrary.external.XmlSwiftBicTypeAdapter"/>
+        </bindings>
+        <bindings node="//xsd:simpleType[@name='IbanType']">
+            <xjc:javaType name="com.adcubum.typelibrary.external.finance.iban.IbanType"
+                          adapter="com.adcubum.apibridge.jaxb.adapter.typelibrary.external.XmlIbanTypeAdapter"/>
+        </bindings>
+        <bindings node="//xsd:simpleType[@name='LanguageTagType']">
+            <xjc:javaType name="com.adcubum.typelibrary.external.i18n.languagetag.LanguageTagType"
+                          adapter="com.adcubum.apibridge.jaxb.adapter.typelibrary.external.XmlLanguageTagTypeAdapter"/>
+        </bindings>
+    </bindings>
+</bindings>

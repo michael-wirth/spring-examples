@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="urn:com:adcubum:syrius:api:common:simpleTypes:v_1_0"
+            xmlns:tns="urn:com:adcubum:syrius:api:common:simpleTypes:v_1_0"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:xhtml="http://www.w3.org/1999/xhtml"
+            elementFormDefault="qualified">
+
+    <xsd:simpleType name="StringType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">
+                Typ der einen String-Wert abbildet.
+                <xhtml:br/>Der Typ kann Spezialwerte enthalten, um einen gewissen Zustand zu repräsentieren:
+                <xhtml:ul>
+                    <xhtml:li>"VEMPTY" wenn ein nicht vorhandener bzw. null Wert repräsentiert wird.</xhtml:li>
+                    <xhtml:li>"VABSENT" wenn ein fehlender bzw. nicht lieferbarer Wert repräsentiert wird.</xhtml:li>
+                    <xhtml:li>"VCONFIDENTIAL" wenn ein geschützer Wert repräsentiert wird, für den kein Zugriffs- oder Anzeigerecht besteht.</xhtml:li>
+                </xhtml:ul>
+                Information: Die Spezialwerte für StringType sind case sensitive.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string"/>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="DateType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">
+                Typ der ein Datumswert ohne Zeit- oder Zoneninformation abbildet.
+                <xhtml:br/>Der Typ kann Spezialwerte enthalten, um einen gewissen Zustand zu repräsentieren:
+                <xhtml:ul>
+                    <xhtml:li>"1899-12-29" wenn ein nicht vorhandener bzw. null Wert repräsentiert wird.</xhtml:li>
+                    <xhtml:li>"1899-12-30" wenn ein fehlender bzw. nicht lieferbarer Wert repräsentiert wird.</xhtml:li>
+                    <xhtml:li>"1899-12-31" wenn ein geschützer Wert repräsentiert wird, für den kein Zugriffs- oder Anzeigerecht besteht. Minimaler Wert des Typs.</xhtml:li>
+                    <xhtml:li>"3000-01-01" wenn ein offenes/unbgerenztes Datum repräsentiert wird. Dies entspricht auch dem maximalen Wert des Typs.</xhtml:li>
+                </xhtml:ul>
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:date">
+            <xsd:maxInclusive value="3000-01-01"/>
+            <xsd:minInclusive value="1899-12-29"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="DateTimeType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">
+                Typ der einen Datumswert mit Zeit-, aber ohne Zoneninformation abbildet.
+                <xhtml:br/>Der Typ kann Spezialwerte enthalten, um einen gewissen Zustand zu repräsentieren:
+                <xhtml:ul>
+                    <xhtml:li>"1899-12-29T00:00:00" wenn ein nicht vorhandener bzw. null Wert repräsentiert wird.</xhtml:li>
+                    <xhtml:li>"1899-12-30T00:00:00" wenn ein fehlender bzw. nicht lieferbarer Wert repräsentiert wird.</xhtml:li>
+                    <xhtml:li>"1899-12-31T00:00:00" wenn ein geschützer Wert repräsentiert wird, für den kein Zugriffs- oder Anzeigerecht besteht.</xhtml:li>
+                    <xhtml:li>"3000-01-01T00:00:00" wenn ein offenes/unbgerenztes Datum repräsentiert wird. Dies entspricht auch dem maximalen Wert des Typs.</xhtml:li>
+                </xhtml:ul>
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:dateTime">
+            <xsd:maxInclusive value="3000-01-01T00:00:00"/>
+            <xsd:minInclusive value="1899-12-29T00:00:00"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="TimestampType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">
+                Typ der ein Datumswert mit Zeit- und Zoneninformation abbildet. (Offset ausgehend von UTC/Greenwich)
+                <xhtml:br/>Der Typ kann Spezialwerte enthalten, um einen gewissen Zustand zu repräsentieren:
+                <xhtml:ul>
+                    <xhtml:li>"1899-12-29T00:00:00+00:00" wenn ein nicht vorhandener bzw. null Wert repräsentiert wird.</xhtml:li>
+                    <xhtml:li>"1899-12-30T00:00:00+00:00" wenn ein fehlender bzw. nicht lieferbarer Wert repräsentiert wird.</xhtml:li>
+                    <xhtml:li>"1899-12-31T00:00:00+00:00" wenn ein geschützer Wert repräsentiert wird, für den kein Zugriffs- oder Anzeigerecht besteht.</xhtml:li>
+                    <xhtml:li>"3000-01-01T00:00:00+00:00" wenn ein offenes/unbgerenztes Datum repräsentiert wird. Dies entspricht auch dem maximalen Wert des Typs.</xhtml:li>
+                </xhtml:ul>
+                Hinweis: Alle Spezialwerte basieren auf dem UTC Offset.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:dateTime">
+            <xsd:maxInclusive value="3000-01-01T00:00:00+00:00"/>
+            <xsd:minInclusive value="1899-12-29T00:00:00+00:00"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="DecimalType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">
+                Typ der eine Dezimalzahl abbildet.
+                <xhtml:br/>Der Typ kann Spezialwerte enthalten, um einen spezifischen Zustand zu repräsentieren:
+                <xhtml:ul>
+                    <xhtml:li>Minimaler Integerwert + 1 (als Dezimalzahl) wenn ein nicht vorhandener bzw. null Wert repräsentiert wird.</xhtml:li>
+                    <xhtml:li>Minimaler Integerwert + 2 (als Dezimalzahl) wenn ein fehlender bzw. nicht lieferbarer Wert repräsentiert wird.</xhtml:li>
+                    <xhtml:li>Minimaler Integerwert + 3 (als Dezimalzahl) wenn ein geschützer Wert repräsentiert wird, für den kein Zugriffs- oder Anzeigerecht besteht.</xhtml:li>
+                </xhtml:ul>
+                Hinweis: Der minimale Integerwert entspricht -2^31 bzw. -2147483648.
+                <xhtml:br/>Der minimale Integerwert wird verwendet, da kein vordefinierter minimaler Dezimalwert existiert.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:decimal">
+            <xsd:minInclusive value="-2147483648"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="IntegerType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">
+                Typ der eine Ganzzahl abbildet.
+                <xhtml:br/>Der Typ kann Spezialwerte enthalten, um einen spezifischen Zustand zu repräsentieren:
+                <xhtml:ul>
+                    <xhtml:li>Minimaler Integerwert + 1 wenn ein nicht vorhandener bzw. null Wert repräsentiert wird.</xhtml:li>
+                    <xhtml:li>Minimaler Integerwert + 2 wenn ein fehlender bzw. nicht lieferbarer Wert repräsentiert wird.</xhtml:li>
+                    <xhtml:li>Minimaler Integerwert + 3 wenn ein geschützer Wert repräsentiert wird, für den kein Zugriffs- oder Anzeigerecht besteht.</xhtml:li>
+                </xhtml:ul>
+                Hinweis: Der minimale Integerwert entspricht -2^31 bzw. -2147483648.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:int">
+            <xsd:minInclusive value="-2147483648"/>
+            <xsd:maxInclusive value="2147483647"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="BooleanType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">
+                Typ der einen boolschen Wert abbildet.
+                <xhtml:br/>Der Typ kann Spezialwerte enthalten, um einen spezifischen Zustand zu repräsentieren.
+                <xhtml:br/>Hinweis: Da der Wertebereich eines boolean nur TRUE und FALSE bzw. 0 und 1 ist,
+                ist es nicht möglich Spezialwerte darüber zu transportieren. Deshalb wird der BooleanType intern über den IntegerType
+                (xsd:int) abgebildet.
+                <xhtml:br/>Folgende Spezialwerte sind möglich:
+                <xhtml:ul>
+                    <xhtml:li>"1" wenn der boolsche Wert TRUE repräsentiert wird. Dies entspricht auch dem maximal zulässigen Wert des Typs.</xhtml:li>
+                    <xhtml:li>"0" wenn der boolsche Wert FALSE repräsentiert wird.</xhtml:li>
+                    <xhtml:li>"-1" wenn ein nicht vorhandener bzw. null Wert repräsentiert wird.</xhtml:li>
+                    <xhtml:li>"-2" wenn ein fehlender bzw. nicht lieferbarer Wert repräsentiert wird.</xhtml:li>
+                    <xhtml:li>"-3" wenn ein geschützer Wert repräsentiert wird, für den kein Zugriffs- oder Anzeigerecht besteht. Dies entspricht auch dem minimal zulässigen Wert des Typs.</xhtml:li>
+                </xhtml:ul>
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="tns:IntegerType">
+            <xsd:minInclusive value="-3"/>
+            <xsd:maxInclusive value="1"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>

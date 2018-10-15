@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:pi="urn:com:adcubum:syrius:api:partnermgmt:common:identifier:v0"
+            xmlns:pt="urn:com:adcubum:syrius:api:partnermgmt:common:types:v0"
+            xmlns:et="urn:com:adcubum:syrius:api:common:extendedTypes:v_1_0"
+            xmlns:ct="urn:com:adcubum:syrius:api:common:types:v_1_0"
+            xmlns:st="urn:com:adcubum:syrius:api:common:simpleTypes:v_1_0"
+            xmlns:pc="urn:com:adcubum:syrius:api:partnermgmt:common:codes:v0"
+            xmlns:tns="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:process:partnerrolle:v0:schema"
+            elementFormDefault="qualified"
+            targetNamespace="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:process:partnerrolle:v0:schema">
+    <xsd:import namespace="urn:com:adcubum:syrius:api:partnermgmt:common:codes:v0" schemaLocation="../../../../../common/codes/v0/codes.xsd"/>
+    <xsd:import namespace="urn:com:adcubum:syrius:api:partnermgmt:common:identifier:v0" schemaLocation="../../../../../common/identifier/v0/identifier.xsd"/>
+    <xsd:import namespace="urn:com:adcubum:syrius:api:partnermgmt:common:types:v0" schemaLocation="../../../../../common/types/v0/types.xsd"/>
+    <xsd:import namespace="urn:com:adcubum:syrius:api:common:types:v_1_0" schemaLocation="../../../../../../common/types/v_1_0/types.xsd"/>
+    <xsd:import namespace="urn:com:adcubum:syrius:api:common:simpleTypes:v_1_0" schemaLocation="../../../../../../common/types/v_1_0/simpleTypes.xsd"/>
+    <xsd:import namespace="urn:com:adcubum:syrius:api:common:extendedTypes:v_1_0" schemaLocation="../../../../../../common/types/v_1_0/extendedTypes.xsd"/>
+    <xsd:element name="createPartnerrolleResponse" type="tns:CreatePartnerrolleResponseType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Response, um eine neue Partnerrolle zu erstellen.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="createPartnerrolleRequest" type="tns:CreatePartnerrolleRequestType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Request, um eine neue Partnerrolle zu erstellen.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="changePartnerrolleResponse" type="tns:ChangePartnerrolleResponseType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Response, um eine Partnerrolle zu ändern.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="changePartnerrolleRequest" type="tns:ChangePartnerrolleRequestType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Request, um eine Partnerrolle zu ändern.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="deletePartnerrolleRequest" type="tns:DeletePartnerrolleRequestType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Request, um eine konkrete Partnerrolle zu löschen.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="deletePartnerrolleResponse" type="tns:DeletePartnerrolleResponseType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Response, um eine konkrete Partnerrolle zu löschen.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="changePartnerrolleGueltigkeitRequest" type="tns:ChangePartnerrolleGueltigkeitRequestType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Request, um die Gültigkeit einer Partnerrolle zu ändern.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="changePartnerrolleGueltigkeitResponse" type="tns:ChangePartnerrolleGueltigkeitResponseType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Response, um die Gültigkeit einer Partnerrolle zu ändern.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:complexType name="CreatePartnerrolleRequestType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Request, um eine neue Partnerrolle zu erstellen.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="partnerrolle" type="tns:WsPartnerrolleType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Enthält die Daten der neuen Partnerrolle.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="partnerId" type="pi:WsPartnerIdType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Technischer Schlüssel des Partners, für welchen die Partnerrolle erstellt wird.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="gueltigAb" type="xsd:date" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Bestimmt ab wann die Partnerrolle gültig ist.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element> 
+            <xsd:element name="gueltigBis" type="xsd:date" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Bestimmt bis wann die Partnerrolle gültig ist.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element> 
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="CreatePartnerrolleResponseType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Response der Partnerrolle Create.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="partnerrolleId" type="pi:WsPartnerrolleIdType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Technische Id der erstellen Partnerrolle.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ChangePartnerrolleRequestType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Request, um eine Partnerrolle zu ändern.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="partnerrolle" type="tns:WsPartnerrolleChangeType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Enthält die geänderten Daten der Partnerrolle.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="partnerrolleId" type="pi:WsPartnerrolleIdType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Technische Id der zu ändernden Partnerrolle.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="aenderungAb" type="xsd:date" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Bestimmt ab wann die Änderungen übernommen werden sollen.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element> 
+            <xsd:element name="aenderungBis" type="xsd:date" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Bestimmt bis wann die Änderungen übernommen werden sollen.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element> 
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ChangePartnerrolleResponseType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Response der Partnerrolle Change.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="partnerrolleId" type="pi:WsPartnerrolleIdType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Technische Id der geänderten Partnerrolle.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="DeletePartnerrolleRequestType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Request, um eine konkrete Partnerrolle zu löschen.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="partnerrolleId" type="pi:WsPartnerrolleIdType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Technische Id der erstellten Rolle.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="DeletePartnerrolleResponseType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Response für das Löschen einer bestimmten Partnerrolle.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="loeschenErfolgreich" type="st:BooleanType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Immer True, im Falle eines Fehlers wird eine Exception geworfen.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ChangePartnerrolleGueltigkeitRequestType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Request, um die Gültigkeit einer Partnerrolle zu ändern.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="partnerrolleId" type="pi:WsPartnerrolleIdType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Technische Id der erstellten Rolle.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="mutationsgrundId" type="pi:WsMutationsgrundIdType" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Technische Id der zu ändernden Partnerrolle.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="gueltigAb" type="xsd:date" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Bestimmt ab wann die neue Gültigkeit ist.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element> 
+            <xsd:element name="gueltigBis" type="xsd:date" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Bestimmt bis wann die neue Gültigkeit ist.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element> 
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ChangePartnerrolleGueltigkeitResponseType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Response für das Ändern der Gültigkeit einer bestimmten Partnerrolle.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="aendernErfolgreich" type="st:BooleanType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Immer True, im Falle eines Fehlers wird eine Exception geworfen.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="WsPartnerrolleType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Enthält die Daten einer Partnerrolle.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ct:WsDataObjectType">
+                <xsd:sequence>
+                    <xsd:element name="partnerrolleDefId" type="pi:WsPartnerrolleDefIdType" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="de">Technischer Schlüssel der Partnerrollen-Definition.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="mutationsgrundId" type="pi:WsMutationsgrundIdType" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="de">Mutationsgrund der Erfassung, z.B Neuerfassung, Adressänderung, Mutation, usw.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsPartnerrolleChangeType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Enthält die Daten einer Partnerrolle.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ct:WsDataObjectType">
+                <xsd:sequence>
+                    <xsd:element name="mutationsgrundId" type="pi:WsMutationsgrundIdType" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="de">Mutationsgrund der Erfassung, z.B Neuerfassung, Adressänderung, Mutation, usw.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+</xsd:schema>

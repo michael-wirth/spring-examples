@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="PartnerrolleProcessService"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  targetNamespace="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:process:partnerrolle:v0"
+                  xmlns:tns="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:process:partnerrolle:v0"
+                  xmlns:pa="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:process:partnerrolle:v0:schema"
+                  xmlns:flt="urn:com:adcubum:syrius:api:common:faults:v_1_0"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/">
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:process:partnerrolle:v0:schema" schemaLocation="schema/PartnerrolleProcessService.xsd"/>
+            <xsd:import namespace="urn:com:adcubum:syrius:api:common:faults:v_1_0" schemaLocation="../../../../../common/faults/v_1_0/faults.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="CreatePartnerrolleRequestMessage">
+        <wsdl:part name="Request" element="pa:createPartnerrolleRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CreatePartnerrolleResponseMessage">
+        <wsdl:part name="Response" element="pa:createPartnerrolleResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ChangePartnerrolleRequestMessage">
+        <wsdl:part name="Request" element="pa:changePartnerrolleRequest"/>
+    </wsdl:message>
+    <wsdl:message name="ChangePartnerrolleResponseMessage">
+        <wsdl:part name="Response" element="pa:changePartnerrolleResponse"/>
+    </wsdl:message>
+    <wsdl:message name="DeletePartnerrolleRequestMessage">
+        <wsdl:part name="Request" element="pa:deletePartnerrolleRequest"/>
+    </wsdl:message>
+    <wsdl:message name="DeletePartnerrolleResponseMessage">
+        <wsdl:part name="Response" element="pa:deletePartnerrolleResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ChangePartnerrolleGueltigkeitRequestMessage">
+        <wsdl:part name="Request" element="pa:changePartnerrolleGueltigkeitRequest"/>
+    </wsdl:message>
+    <wsdl:message name="ChangePartnerrolleGueltigkeitResponseMessage">
+        <wsdl:part name="Response" element="pa:changePartnerrolleGueltigkeitResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ApiFault">
+        <wsdl:part name="fault" element="flt:apiFaultInfo"/>
+    </wsdl:message>
+    <wsdl:portType name="PartnerrolleProcessServicePortType">
+        <wsdl:operation name="createPartnerrolle">
+            <wsdl:documentation>Erstellt eine neue Partnerrollen inkl. Param-Attrs (Custom-Attrs) zu einem Partner.</wsdl:documentation>
+            <wsdl:input name="CreatePartnerrolleRequest" message="tns:CreatePartnerrolleRequestMessage"/>
+            <wsdl:output name="CreatePartnerrolleResponse" message="tns:CreatePartnerrolleResponseMessage"/>
+            <wsdl:fault name="ApiFault" message="tns:ApiFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="changePartnerrolle">
+            <wsdl:documentation>Ändert eine bestehende Partnerrollen inkl. Param-Attrs (Custom-Attrs).</wsdl:documentation>
+            <wsdl:input name="ChangePartnerrolleRequest" message="tns:ChangePartnerrolleRequestMessage"/>
+            <wsdl:output name="ChangePartnerrolleResponse" message="tns:ChangePartnerrolleResponseMessage"/>
+            <wsdl:fault name="ApiFault" message="tns:ApiFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="deletePartnerrolle">
+            <wsdl:documentation>Löscht eine konkrete Partnerrolle.</wsdl:documentation>
+            <wsdl:input name="DeletePartnerrolleRequest" message="tns:DeletePartnerrolleRequestMessage"/>
+            <wsdl:output name="DeletePartnerrolleResponse" message="tns:DeletePartnerrolleResponseMessage"/>
+            <wsdl:fault name="ApiFault" message="tns:ApiFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="changePartnerrolleGueltigkeit">
+            <wsdl:documentation>Ändert die Gültigkeit einer bestehenden Partnerrolle.</wsdl:documentation>
+            <wsdl:input name="ChangePartnerrolleGueltigkeitRequest" message="tns:ChangePartnerrolleGueltigkeitRequestMessage"/>
+            <wsdl:output name="ChangePartnerrolleGueltigkeitResponse" message="tns:ChangePartnerrolleGueltigkeitResponseMessage"/>
+            <wsdl:fault name="ApiFault" message="tns:ApiFault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="PartnerrolleProcessServiceBinding" type="tns:PartnerrolleProcessServicePortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="createPartnerrolle">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="CreatePartnerrolleRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreatePartnerrolleResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ApiFault">
+                <soap:fault name="ApiFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="changePartnerrolle">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="ChangePartnerrolleRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="ChangePartnerrolleResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ApiFault">
+                <soap:fault name="ApiFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deletePartnerrolle">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="DeletePartnerrolleRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="DeletePartnerrolleResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ApiFault">
+                <soap:fault name="ApiFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="changePartnerrolleGueltigkeit">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="ChangePartnerrolleGueltigkeitRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="ChangePartnerrolleGueltigkeitResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ApiFault">
+                <soap:fault name="ApiFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="PartnerrolleProcessService_v0">
+        <wsdl:port name="PartnerrolleProcessService" binding="tns:PartnerrolleProcessServiceBinding">
+            <soap:address location="https://example.com/PartnerrolleProcessService_v0"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

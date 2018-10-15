@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="AdresseAenderungService"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  targetNamespace="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:data:adresseaenderung:v0"
+                  xmlns:tns="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:data:adresseaenderung:v0"
+                  xmlns:pa="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:data:adresseaenderung:v0:schema"
+                  xmlns:flt="urn:com:adcubum:syrius:api:common:faults:v_1_0"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/">
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:data:adresseaenderung:v0:schema" schemaLocation="schema/AdresseAenderungService.xsd"/>
+            <xsd:import namespace="urn:com:adcubum:syrius:api:common:faults:v_1_0" schemaLocation="../../../../../common/faults/v_1_0/faults.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="GetAdresseAenderungRequestMessage">
+        <wsdl:part name="request" element="pa:getAdresseAenderungRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetAdresseAenderungResponseMessage">
+        <wsdl:part name="response" element="pa:getAdresseAenderungResponse"/>
+    </wsdl:message>
+    <wsdl:message name="GetAdresseAdresseAenderungRequestMessage">
+        <wsdl:part name="request" element="pa:getAdresseAdresseAenderungRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetAdresseAdresseAenderungResponseMessage">
+        <wsdl:part name="response" element="pa:getAdresseAdresseAenderungResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ApiFault">
+        <wsdl:part name="fault" element="flt:apiFaultInfo"/>
+    </wsdl:message>
+    <wsdl:portType name="AdresseAenderungServicePortType">
+        <wsdl:operation name="getAdresseAenderung">
+            <wsdl:documentation>Liefert für einen technischen Adresseänderungschlüssel die Daten der zugehörigen Adresseänderung.</wsdl:documentation>
+            <wsdl:input name="GetAdresseAenderungRequest" message="tns:GetAdresseAenderungRequestMessage"/>
+            <wsdl:output name="GetAdresseAenderungResponse" message="tns:GetAdresseAenderungResponseMessage"/>
+            <wsdl:fault name="ApiFault" message="tns:ApiFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="getAdresseAdresseAenderung">
+            <wsdl:documentation>Liefert für einen technischen Adressschlüssel die Daten aller dazugehörenden offenen Adresseänderungen.</wsdl:documentation>
+            <wsdl:input name="GetAdresseAdresseAenderungRequest" message="tns:GetAdresseAdresseAenderungRequestMessage"/>
+            <wsdl:output name="GetAdresseAdresseAenderungResponse" message="tns:GetAdresseAdresseAenderungResponseMessage"/>
+            <wsdl:fault name="ApiFault" message="tns:ApiFault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="AdresseAenderungServiceBinding" type="tns:AdresseAenderungServicePortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getAdresseAenderung">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="GetAdresseAenderungRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetAdresseAenderungResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ApiFault">
+                <soap:fault name="ApiFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAdresseAdresseAenderung">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="GetAdresseAdresseAenderungRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetAdresseAdresseAenderungResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ApiFault">
+                <soap:fault name="ApiFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="AdresseAenderungService_v0">
+        <wsdl:port name="AdresseAenderungService" binding="tns:AdresseAenderungServiceBinding">
+            <soap:address location="https://example.com/AdresseAenderungService_v0"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

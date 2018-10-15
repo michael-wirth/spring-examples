@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="TelefonService"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  targetNamespace="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:data:telefon:v0"
+                  xmlns:tns="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:data:telefon:v0"
+                  xmlns:pa="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:data:telefon:v0:schema"
+                  xmlns:flt="urn:com:adcubum:syrius:api:common:faults:v_1_0"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/">
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:data:telefon:v0:schema" schemaLocation="schema/TelefonService.xsd"/>
+            <xsd:import namespace="urn:com:adcubum:syrius:api:common:faults:v_1_0" schemaLocation="../../../../../common/faults/v_1_0/faults.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="GetTelefonRequestMessage">
+        <wsdl:part name="Request" element="pa:getTelefonRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetTelefonResponseMessage">
+        <wsdl:part name="Response" element="pa:getTelefonResponse"/>
+    </wsdl:message>
+    <wsdl:message name="GetPartnerTelefonRequestMessage">
+        <wsdl:part name="Request" element="pa:getPartnerTelefonRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetPartnerTelefonResponseMessage">
+        <wsdl:part name="Response" element="pa:getPartnerTelefonResponse"/>
+    </wsdl:message>
+    <wsdl:message name="GetAdresseTelefonRequestMessage">
+        <wsdl:part name="Request" element="pa:getAdresseTelefonRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetAdresseTelefonResponseMessage">
+        <wsdl:part name="Response" element="pa:getAdresseTelefonResponse"/>
+    </wsdl:message>
+    <wsdl:message name="GetLeistungserbringerTelefonRequestMessage">
+        <wsdl:part name="Request" element="pa:getLeistungserbringerTelefonRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetLeistungserbringerTelefonResponseMessage">
+        <wsdl:part name="Response" element="pa:getLeistungserbringerTelefonResponse"/>
+    </wsdl:message>
+    <wsdl:message name="GetOrganisationseinheitTelefonRequestMessage">
+        <wsdl:part name="Request" element="pa:getOrganisationseinheitTelefonRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetOrganisationseinheitTelefonResponseMessage">
+        <wsdl:part name="Response" element="pa:getOrganisationseinheitTelefonResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ApiFault">
+        <wsdl:part name="fault" element="flt:apiFaultInfo"/>
+    </wsdl:message>
+    <wsdl:portType name="TelefonServicePortType">
+        <wsdl:operation name="getTelefon">
+            <wsdl:documentation>Liefert für einen technischen Telefonschlüssel die Daten der zugehörigen Telefonnummer.</wsdl:documentation>
+            <wsdl:input name="GetTelefonRequest" message="tns:GetTelefonRequestMessage"/>
+            <wsdl:output name="GetTelefonResponse" message="tns:GetTelefonResponseMessage"/>
+            <wsdl:fault name="ApiFault" message="tns:ApiFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="getPartnerTelefon">
+            <wsdl:documentation>Liefert für einen technischen Partnerschlüssel die Daten der dazugehörenden Telefonnummern.</wsdl:documentation>
+            <wsdl:input name="GetPartnerTelefonRequest" message="tns:GetPartnerTelefonRequestMessage"/>
+            <wsdl:output name="GetPartnerTelefonResponse" message="tns:GetPartnerTelefonResponseMessage"/>
+            <wsdl:fault name="ApiFault" message="tns:ApiFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="getAdresseTelefon">
+            <wsdl:documentation>Liefert für einen technischen Adressschlüssel die Daten aller dazugehörenden Telefonnummern.</wsdl:documentation>
+            <wsdl:input name="GetAdresseTelefonRequest" message="tns:GetAdresseTelefonRequestMessage"/>
+            <wsdl:output name="GetAdresseTelefonResponse" message="tns:GetAdresseTelefonResponseMessage"/>
+            <wsdl:fault name="ApiFault" message="tns:ApiFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="getLeistungserbringerTelefon">
+            <wsdl:documentation>Liefert für einen technischen Leistungserbringerschlüssel die Daten der dazugehörenden Telefonnummern.</wsdl:documentation>
+            <wsdl:input name="GetLeistungserbringerTelefonRequest" message="tns:GetLeistungserbringerTelefonRequestMessage"/>
+            <wsdl:output name="GetLeistungserbringerTelefonResponse" message="tns:GetLeistungserbringerTelefonResponseMessage"/>
+            <wsdl:fault name="ApiFault" message="tns:ApiFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="getOrganisationseinheitTelefon">
+            <wsdl:documentation>Liefert für einen technischen Organisationseinheitschlüssel die Daten der dazugehörenden Telefonnummern.</wsdl:documentation>
+            <wsdl:input name="GetOrganisationseinheitTelefonRequest" message="tns:GetOrganisationseinheitTelefonRequestMessage"/>
+            <wsdl:output name="GetOrganisationseinheitTelefonResponse" message="tns:GetOrganisationseinheitTelefonResponseMessage"/>
+            <wsdl:fault name="ApiFault" message="tns:ApiFault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="TelefonServiceBinding" type="tns:TelefonServicePortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getTelefon">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="GetTelefonRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetTelefonResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ApiFault">
+                <soap:fault name="ApiFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getPartnerTelefon">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="GetPartnerTelefonRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetPartnerTelefonResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ApiFault">
+                <soap:fault name="ApiFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAdresseTelefon">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="GetAdresseTelefonRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetAdresseTelefonResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ApiFault">
+                <soap:fault name="ApiFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getLeistungserbringerTelefon">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="GetLeistungserbringerTelefonRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetLeistungserbringerTelefonResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ApiFault">
+                <soap:fault name="ApiFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getOrganisationseinheitTelefon">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="GetOrganisationseinheitTelefonRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetOrganisationseinheitTelefonResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ApiFault">
+                <soap:fault name="ApiFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="TelefonService_v0">
+        <wsdl:port name="TelefonService" binding="tns:TelefonServiceBinding">
+            <soap:address location="https://example.com/TelefonService_v0"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

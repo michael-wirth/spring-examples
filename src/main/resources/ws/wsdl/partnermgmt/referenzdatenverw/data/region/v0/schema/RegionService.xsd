@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="urn:com:adcubum:syrius:api:partnermgmt:referenzdatenverw:data:region:v0:types"
+            xmlns:tns="urn:com:adcubum:syrius:api:partnermgmt:referenzdatenverw:data:region:v0:types"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:pi="urn:com:adcubum:syrius:api:partnermgmt:common:identifier:v0"
+            xmlns:ci="urn:com:adcubum:syrius:api:partnermgmt:common:codes:v0"
+            xmlns:pt="urn:com:adcubum:syrius:api:partnermgmt:common:types:v0"
+            xmlns:ct="urn:com:adcubum:syrius:api:common:types:v_1_0"
+            xmlns:st="urn:com:adcubum:syrius:api:common:simpleTypes:v_1_0"
+            xmlns:pc="urn:com:adcubum:syrius:api:partnermgmt:common:codes:v0"
+            elementFormDefault="qualified">
+
+    <xsd:import namespace="urn:com:adcubum:syrius:api:partnermgmt:common:codes:v0" schemaLocation="../../../../../common/codes/v0/codes.xsd"/>
+    <xsd:import namespace="urn:com:adcubum:syrius:api:partnermgmt:common:identifier:v0" schemaLocation="../../../../../common/identifier/v0/identifier.xsd"/>
+    <xsd:import namespace="urn:com:adcubum:syrius:api:partnermgmt:common:types:v0" schemaLocation="../../../../../common/types/v0/types.xsd"/>
+    <xsd:import namespace="urn:com:adcubum:syrius:api:common:types:v_1_0" schemaLocation="../../../../../../common/types/v_1_0/types.xsd"/>
+    <xsd:import namespace="urn:com:adcubum:syrius:api:common:simpleTypes:v_1_0" schemaLocation="../../../../../../common/types/v_1_0/simpleTypes.xsd"/>
+    
+   	<xsd:element name="readRegionCodeRequest" type="tns:ReadRegionCodeRequestType">
+    	<xsd:annotation>
+        	<xsd:documentation>Request zur Ermittlung des Codes einer Region zu einem RegionTypID</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    
+    <xsd:element name="readRegionCodeResponse" type="tns:ReadRegionCodeResponseType">
+    	<xsd:annotation>
+        	<xsd:documentation>Response zur Ermittlung einer Region zu einem RegionTypID</xsd:documentation>
+    	</xsd:annotation>
+    </xsd:element>
+
+    <xsd:element name="regionReadType" type="tns:RegionReadType">
+    	<xsd:annotation>
+        	<xsd:documentation>Detail Angaben von der zu ermitelnden Region</xsd:documentation>
+    	</xsd:annotation>
+    </xsd:element>
+
+	<xsd:complexType name="RegionReadType">
+    	<xsd:annotation>
+            <xsd:documentation xml:lang="de">Detail Angaben von der zu ermitelnden Region</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+			<xsd:annotation>
+               	<xsd:documentation>Parameter zur Evaluation eines Region-Codes.</xsd:documentation>
+			</xsd:annotation>
+			<xsd:sequence>
+				<xsd:element name="gemeindeNr" type="st:IntegerType" minOccurs="0" maxOccurs="1">
+					<xsd:annotation>
+						<xsd:documentation>Nummer der Gemeinde.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element name="plz" type="st:StringType" minOccurs="0" maxOccurs="1">
+					<xsd:annotation>
+						<xsd:documentation>Die Postleitzahl.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element name="plzZusatz" type="st:StringType" minOccurs="0" maxOccurs="1">
+					<xsd:annotation>
+						<xsd:documentation>Der Postleitzahl-Zusatz.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element name="land" type="st:StringType" minOccurs="0" maxOccurs="1">
+					<xsd:annotation>
+						<xsd:documentation>Das Land der Region.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+    		</xsd:sequence>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ReadRegionCodeRequestType">
+    	<xsd:annotation>
+            <xsd:documentation xml:lang="de">Request zum Evaluieren einer Region.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="regionTypId" type="pi:WsRegionTypIdType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                     <xsd:documentation>Technischer Schlüssel des RegionTyps.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="regionReadType" type="tns:RegionReadType" minOccurs="1" maxOccurs="1">
+				<xsd:annotation>
+                	<xsd:documentation>Parameter zur Evaluation eines Region-Codes.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>    
+            <xsd:element name="stichdatum" type="st:DateType" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation>Fachlicher Zeitpunkt. Der Parameter ist optional, wird er nicht gesetzt wird der aktuelle Zeitpunkt verwendet.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="ReadRegionCodeResponseType">
+		<xsd:annotation>
+            <xsd:documentation xml:lang="de">Der Regioncode der ermittelten Region.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="regionCodeType" type="ci:WsRegionCodeType" minOccurs="1" maxOccurs="1">
+            	<xsd:annotation>
+            		<xsd:documentation xml:lang="de">Der ermittelte Regionscode.</xsd:documentation>
+        		</xsd:annotation>
+            </xsd:element> 
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

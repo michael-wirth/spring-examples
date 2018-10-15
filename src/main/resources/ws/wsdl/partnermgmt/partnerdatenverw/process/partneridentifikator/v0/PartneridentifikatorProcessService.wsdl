@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="PartneridentifikatorProcessService"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  targetNamespace="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:process:partneridentifikator:v0"
+                  xmlns:tns="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:process:partneridentifikator:v0"
+                  xmlns:pa="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:process:partneridentifikator:v0:schema"
+                  xmlns:flt="urn:com:adcubum:syrius:api:common:faults:v_1_0"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/">
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:process:partneridentifikator:v0:schema" schemaLocation="schema/PartneridentifikatorProcessService.xsd"/>
+            <xsd:import namespace="urn:com:adcubum:syrius:api:common:faults:v_1_0" schemaLocation="../../../../../common/faults/v_1_0/faults.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="CreatePartneridentifikatorRequestMessage">
+        <wsdl:part name="Request" element="pa:createPartneridentifikatorRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CreatePartneridentifikatorResponseMessage">
+        <wsdl:part name="Response" element="pa:createPartneridentifikatorResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CreateOnlineIdRequestMessage">
+        <wsdl:part name="Request" element="pa:createOnlineIdRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CreateOnlineIdResponseMessage">
+        <wsdl:part name="Response" element="pa:createOnlineIdResponse"/>
+    </wsdl:message>
+    <wsdl:message name="DeletePartneridentifikatorRequestMessage">
+        <wsdl:part name="Request" element="pa:deletePartneridentifikatorRequest"/>
+    </wsdl:message>
+    <wsdl:message name="DeletePartneridentifikatorResponseMessage">
+        <wsdl:part name="Response" element="pa:deletePartneridentifikatorResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ApiFault">
+        <wsdl:part name="fault" element="flt:apiFaultInfo"/>
+    </wsdl:message>
+    <wsdl:portType name="PartneridentifikatorProcessServicePortType">
+        <wsdl:operation name="createPartneridentifikator">
+            <wsdl:documentation>Erstellt einen neue Partneridentifikator zu einem Partner.</wsdl:documentation>
+            <wsdl:input name="CreatePartneridentifikatorRequest" message="tns:CreatePartneridentifikatorRequestMessage"/>
+            <wsdl:output name="CreatePartneridentifikatorResponse" message="tns:CreatePartneridentifikatorResponseMessage"/>
+            <wsdl:fault name="ApiFault" message="tns:ApiFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="createOnlineId">
+            <wsdl:documentation>Erstellt eine neue Online-ID zu einem Partner.</wsdl:documentation>
+            <wsdl:input name="CreateOnlineIdRequest" message="tns:CreateOnlineIdRequestMessage"/>
+            <wsdl:output name="CreateOnlineIdResponse" message="tns:CreateOnlineIdResponseMessage"/>
+            <wsdl:fault name="ApiFault" message="tns:ApiFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="deletePartneridentifikator">
+            <wsdl:documentation>Löscht einen konkreten Partneridentifikator.</wsdl:documentation>
+            <wsdl:input name="DeletePartneridentifikatorRequest" message="tns:DeletePartneridentifikatorRequestMessage"/>
+            <wsdl:output name="DeletePartneridentifikatorResponse" message="tns:DeletePartneridentifikatorResponseMessage"/>
+            <wsdl:fault name="ApiFault" message="tns:ApiFault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="PartneridentifikatorProcessServiceBinding" type="tns:PartneridentifikatorProcessServicePortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="createPartneridentifikator">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="CreatePartneridentifikatorRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreatePartneridentifikatorResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ApiFault">
+                <soap:fault name="ApiFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createOnlineId">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="CreateOnlineIdRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreateOnlineIdResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ApiFault">
+                <soap:fault name="ApiFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deletePartneridentifikator">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="DeletePartneridentifikatorRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="DeletePartneridentifikatorResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ApiFault">
+                <soap:fault name="ApiFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="PartneridentifikatorProcessService_v0">
+        <wsdl:port name="PartneridentifikatorProcessService" binding="tns:PartneridentifikatorProcessServiceBinding">
+            <soap:address location="https://example.com/PartneridentifikatorProcessService_v0"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

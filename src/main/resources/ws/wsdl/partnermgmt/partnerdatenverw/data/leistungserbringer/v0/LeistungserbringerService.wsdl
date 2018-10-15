@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="LeistungserbringerService"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  targetNamespace="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:data:leistungserbringer:v0"
+                  xmlns:tns="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:data:leistungserbringer:v0"
+                  xmlns:pa="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:data:leistungserbringer:v0:schema"
+                  xmlns:flt="urn:com:adcubum:syrius:api:common:faults:v_1_0"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/">
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:data:leistungserbringer:v0:schema" schemaLocation="schema/LeistungserbringerService.xsd"/>
+            <xsd:import namespace="urn:com:adcubum:syrius:api:common:faults:v_1_0" schemaLocation="../../../../../common/faults/v_1_0/faults.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="GetLeistungserbringerRequestMessage">
+        <wsdl:part name="Request" element="pa:getLeistungserbringerRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetLeistungserbringerResponseMessage">
+        <wsdl:part name="Response" element="pa:getLeistungserbringerResponse"/>
+    </wsdl:message>
+    <wsdl:message name="SearchLeistungserbringerRequestMessage">
+        <wsdl:part name="request" element="pa:searchLeistungserbringerRequest"/>
+    </wsdl:message>
+    <wsdl:message name="SearchLeistungserbringerResponseMessage">
+        <wsdl:part name="response" element="pa:searchLeistungserbringerResponse"/>
+    </wsdl:message>
+    <wsdl:message name="GetPublicLeistungserbringerRequestMessage">
+        <wsdl:part name="Request" element="pa:getPublicLeistungserbringerRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetPublicLeistungserbringerResponseMessage">
+        <wsdl:part name="Response" element="pa:getPublicLeistungserbringerResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ApiFault">
+        <wsdl:part name="fault" element="flt:apiFaultInfo"/>
+    </wsdl:message>
+    <wsdl:portType name="LeistungserbringerServicePortType">
+        <wsdl:operation name="getLeistungserbringer">
+            <wsdl:documentation>Liefert für einen technischen Leistungserbringerschlüssel die Stammdaten des zugehörigen Leistungserbringers.
+
+Hinweis:
+Für folgende Nummern sind die Partneridentifikatoren vordefiniert, auch wenn keine konkreten Definitionen in adcubum Syrius existieren:
+* ZSR-Nummer: &apos;SYR_Partner_ZsrNr&apos;
+
+Diese sind so im Response enthalten.</wsdl:documentation>
+            <wsdl:input name="GetLeistungserbringerRequest" message="tns:GetLeistungserbringerRequestMessage"/>
+            <wsdl:output name="GetLeistungserbringerResponse" message="tns:GetLeistungserbringerResponseMessage"/>
+            <wsdl:fault name="ApiFault" message="tns:ApiFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="searchLeistungserbringer">
+            <wsdl:documentation>Liefert eine Liste von technischen Schlüssel gemäss den gesetzten Suchkriterien. Die Schlüssel beziehen sich dabei auf Leistungserbringer und Adresse. Die Suche erfolgt per Stichdatum.</wsdl:documentation>
+            <wsdl:input name="SearchLeistungserbringerRequest" message="tns:SearchLeistungserbringerRequestMessage"/>
+            <wsdl:output name="SearchLeistungserbringerResponse" message="tns:SearchLeistungserbringerResponseMessage"/>
+            <wsdl:fault name="ApiFault" message="tns:ApiFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="getPublicLeistungserbringer">
+            <wsdl:documentation>Liefert für einen technischen Leistungserbringerschlüssel die öffentlichen Stammdaten des zugehörigen Leistungserbringers. Dabei wird der Objektschutz ignoriert.
+
+Hinweis:
+Für folgende Nummern sind die Partneridentifikatoren vordefiniert, auch wenn keine konkreten Definitionen in adcubum Syrius existieren:
+* ZSR-Nummer: &apos;SYR_Partner_ZsrNr&apos;
+
+Diese sind so im Response enthalten.</wsdl:documentation>
+            <wsdl:input name="GetPublicLeistungserbringerRequest" message="tns:GetPublicLeistungserbringerRequestMessage"/>
+            <wsdl:output name="GetPublicLeistungserbringerResponse" message="tns:GetPublicLeistungserbringerResponseMessage"/>
+            <wsdl:fault name="ApiFault" message="tns:ApiFault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="LeistungserbringerServiceBinding" type="tns:LeistungserbringerServicePortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getLeistungserbringer">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="GetLeistungserbringerRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetLeistungserbringerResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ApiFault">
+                <soap:fault name="ApiFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="searchLeistungserbringer">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="SearchLeistungserbringerRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="SearchLeistungserbringerResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ApiFault">
+                <soap:fault name="ApiFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getPublicLeistungserbringer">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="GetPublicLeistungserbringerRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetPublicLeistungserbringerResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ApiFault">
+                <soap:fault name="ApiFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="LeistungserbringerService_v0">
+        <wsdl:port name="LeistungserbringerService" binding="tns:LeistungserbringerServiceBinding">
+            <soap:address location="https://example.com/LeistungserbringerService_v0"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:ci="urn:com:adcubum:syrius:api:common:identifier:v_1_0"
+            xmlns:tns="urn:com:adcubum:syrius:api:partnermgmt:common:identifier:v0"
+            elementFormDefault="qualified"
+            targetNamespace="urn:com:adcubum:syrius:api:partnermgmt:common:identifier:v0">
+    <xsd:import namespace="urn:com:adcubum:syrius:api:common:identifier:v_1_0" schemaLocation="../../../../common/identifier/v_1_0/identifier.xsd"/>
+    <xsd:complexType name="WsAdresseIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel einer Adresse.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsAdressrolleIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel einer Adressrolle.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsAkteIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel einer Akte.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsAuslaenderstatusIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel eines Ausländerstatus.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsBenutzerIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel eines Benutzers.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsBeziehungIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel einer Beziehung.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsEmailIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel einer E-Mail-Adresse.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsFaktIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel eines Fakts.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsKontaktIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel eines Kontakts.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsLeistungserbringerIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel eines Leistungserbringers.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsOrganisationseinheitIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel einer Organisationseinheit.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsPartnerIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel eines Partners.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsPartneridentifikatorIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel eines Partneridentifikators.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsPartnerrolleIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel einer Partnerrolle.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsSepaMandatIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel eines Sepa-Mandats.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsTelefonIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel eines Telefons.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsTextModulIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel eines Textbausteins.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsWebIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel einer Webadresse.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsZahlungsverbindungIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel einer Zahlungsverbindung.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsAdresseDefIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel einer Adresse-Definition.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsAdressrolleDefIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel einer Adressrollen-Definition.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsBeziehungDefIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel einer Beziehungsdefinition.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsEmailDefIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel einer E-Mail-Adresse-Definition.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsFaktDefIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel einer Fakt-Definition.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsPartneridentifikatorDefIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel einer Partneridentifikator-Definition.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsPartnerrolleDefIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel einer Partnerrollen-Definition.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsPartnerschutzDefIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel einer Partnerschutz-Definition.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsTelefonDefIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel einer Telefon-Definition.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsWebDefIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel einer Webadressen-Definition.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsMutationsgrundIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel eines Mutationsgrunds.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsBankIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel einer Bank.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsVertragIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel eines Vertrags.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsWaehrungIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel einer Währung.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsAdresseAenderungIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel einer Adressänderung.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsRechnungsstellerTypIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel eines Rechnungsstellertyps.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsPartnerAenderungIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel einer Partneränderung.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsGbereichIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel eines Geschäftsbereichs.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsDokumentversandIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel eines Dokumentversands.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsDokumenttypIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel eines Dokumenttyps.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsFalldossierIdType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel eines Falldossiers.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsRegionTypIdType">
+      	<xsd:annotation>
+            <xsd:documentation xml:lang="de">Technischer Schlüssel eines RegionTyps.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ci:WsIdType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+</xsd:schema>

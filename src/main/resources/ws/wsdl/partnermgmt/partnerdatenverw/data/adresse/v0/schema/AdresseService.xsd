@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:pi="urn:com:adcubum:syrius:api:partnermgmt:common:identifier:v0"
+            xmlns:pt="urn:com:adcubum:syrius:api:partnermgmt:common:types:v0"
+            xmlns:et="urn:com:adcubum:syrius:api:common:extendedTypes:v_1_0"
+            xmlns:ct="urn:com:adcubum:syrius:api:common:types:v_1_0"
+            xmlns:st="urn:com:adcubum:syrius:api:common:simpleTypes:v_1_0"
+
+            xmlns:pc="urn:com:adcubum:syrius:api:partnermgmt:common:codes:v0"
+            xmlns:tns="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:data:adresse:v0:schema"
+            targetNamespace="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:data:adresse:v0:schema"
+            elementFormDefault="qualified">
+    <xsd:import namespace="urn:com:adcubum:syrius:api:partnermgmt:common:codes:v0" schemaLocation="../../../../../common/codes/v0/codes.xsd"/>
+    <xsd:import namespace="urn:com:adcubum:syrius:api:partnermgmt:common:identifier:v0" schemaLocation="../../../../../common/identifier/v0/identifier.xsd"/>
+    <xsd:import namespace="urn:com:adcubum:syrius:api:partnermgmt:common:types:v0" schemaLocation="../../../../../common/types/v0/types.xsd"/>
+    <xsd:import namespace="urn:com:adcubum:syrius:api:common:types:v_1_0" schemaLocation="../../../../../../common/types/v_1_0/types.xsd"/>
+    <xsd:import namespace="urn:com:adcubum:syrius:api:common:simpleTypes:v_1_0" schemaLocation="../../../../../../common/types/v_1_0/simpleTypes.xsd"/>
+    <xsd:import namespace="urn:com:adcubum:syrius:api:common:extendedTypes:v_1_0" schemaLocation="../../../../../../common/types/v_1_0/extendedTypes.xsd"/>
+    <xsd:element name="getAdresseRequest" type="tns:GetAdresseRequestType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Request, mit dem die Adressen geladen werden.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="getAdresseResponse" type="tns:GetAdresseResponseType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Response, in dem die geladenen Adressen enthalten sind.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="getPartnerDomiziladresseRequest" type="tns:GetPartnerDomiziladresseRequestType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Request, mit dem die Domiziladressen für einen Partner geladen werden.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="getPartnerDomiziladresseResponse" type="tns:GetPartnerDomiziladresseResponseType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Response, in dem die zu den Partern geladenen Domiziladressen enthalten sind.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="getLeistungserbringerDomiziladresseRequest" type="tns:GetLeistungserbringerDomiziladresseRequestType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Request, mit dem die Domiziladressen für einen Leistungserbringer geladen werden.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="getLeistungserbringerDomiziladresseResponse" type="tns:GetLeistungserbringerDomiziladresseResponseType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Response, in dem die zu den Leistungserbringern geladenen Domiziladressen enthalten sind.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="getPartnerAdressenRequest" type="tns:GetPartnerAdressenRequestType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Request, mit dem Domizil- und Zusatzadressen für einen Partner geladen werden.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="getPartnerAdressenResponse" type="tns:GetPartnerAdressenResponseType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Response, in dem die zu den Partern geladenen Adressen enthalten sind.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="getPartnerZusatzadressenRequest" type="tns:GetPartnerZusatzadressenRequestType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Request, mit dem Zusatzadressen für einen Partner geladen werden.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="getPartnerZusatzadressenResponse" type="tns:GetPartnerZusatzadressenResponseType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Response, in dem die zu den Partern geladenen Zusatzadressen enthalten sind.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="getOrganisationseinheitDomiziladresseRequest" type="tns:GetOrganisationseinheitDomiziladresseRequestType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Request, mit dem die Domiziladressen für eine Organisationseinheit geladen werden.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="getOrganisationseinheitDomiziladresseResponse" type="tns:GetOrganisationseinheitDomiziladresseResponseType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Response, in dem die zu den Organisationseinheiten geladenen Domiziladressen enthalten sind.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="getLeistungserbringerZusatzadressenRequest" type="tns:GetLeistungserbringerZusatzadressenRequestType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Request, mit dem Zusatzadressen für einen Leistungserbringer geladen werden.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="getLeistungserbringerZusatzadressenResponse" type="tns:GetLeistungserbringerZusatzadressenResponseType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Response, in dem die zu den Leistungserbringern geladenen Zusatzadressen enthalten sind.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="getOrganisationseinheitZusatzadressenRequest" type="tns:GetOrganisationseinheitZusatzadressenRequestType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Request, mit dem Zusatzadressen für eine Organisationseinheit geladen werden.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="getOrganisationseinheitZusatzadressenResponse" type="tns:GetOrganisationseinheitZusatzadressenResponseType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Response, in dem die zu den Organisationseinheiten geladenen Zusatzadressen enthalten sind.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:complexType name="GetAdresseRequestType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Request, mit dem die Adressen geladen werden.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="adresseId" type="pi:WsAdresseIdType" minOccurs="1" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Technischer Schlüssel einer Domizil- oder Zusatzadresse.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="stichtag" type="xsd:date" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Fachlicher Zeitpunkt. Der Parameter ist optional, wird er nicht gesetzt wird der aktuelle Zeitpunkt verwendet</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="GetAdresseResponseType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Response, in dem die geladenen Adressen enthalten sind.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="adresse" type="tns:WsAdresseType" minOccurs="1" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Domizil- oder Zusatzadresse.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="GetPartnerDomiziladresseRequestType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Request, mit dem die Domiziladressen für einen Partner geladen werden.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="partnerId" type="pi:WsPartnerIdType" minOccurs="1" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Technischer Schlüssel eines Partners, von welchem die Domiziladresse geladen werden soll.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="stichtag" type="xsd:date" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Fachlicher Zeitpunkt. Der Parameter ist optional, wird er nicht gesetzt wird der aktuelle Zeitpunkt verwendet</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="GetPartnerDomiziladresseResponseType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Response, in dem die zu den Partnern geladenen Domiziladressen enthalten sind.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="partnerDomiziladressen" type="tns:WsPartnerDomiziladresseType" minOccurs="1" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Liste von PartnerIds mit den zugehörigen Domiziladressen.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="GetLeistungserbringerDomiziladresseRequestType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Request, mit dem die Domiziladressen für einen Leistungserbringer geladen werden.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="leistungserbringerId" type="pi:WsLeistungserbringerIdType" minOccurs="1" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Technischer Schlüssel eines Leistungserbringers, von welchem die Domiziladresse geladen werden soll.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="stichtag" type="xsd:date" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Fachlicher Zeitpunkt. Der Parameter ist optional, wird er nicht gesetzt wird der aktuelle Zeitpunkt verwendet</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="GetLeistungserbringerDomiziladresseResponseType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Response, in dem die zu den Leistungserbringern geladenen Domiziladressen enthalten sind.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="leistungserbringerDomiziladressen" type="tns:WsLeistungserbringerDomiziladresseType" minOccurs="1" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Liste von LeistungserbringerIds mit den zugehörigen Domiziladressen.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="GetPartnerAdressenRequestType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Request, mit dem Domizil- und Zusatzadressen für einen Partner geladen werden.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="partnerId" type="pi:WsPartnerIdType" minOccurs="1" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Technischer Schlüssel eines Partners, von welchem die Adressen geladen werden soll.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="stichtag" type="xsd:date" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Fachlicher Zeitpunkt. Der Parameter ist optional, wird er nicht gesetzt wird der aktuelle Zeitpunkt verwendet</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="GetPartnerAdressenResponseType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Response, in dem die zu den Partern geladenen Adressen enthalten sind.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="partnerAdressen" type="tns:WsPartnerAdresseType" minOccurs="1" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Liste von PartnerIds mit den zugehörigen Adressen (Domizil- und Zusatzadresse).</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="GetPartnerZusatzadressenRequestType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Request, mit dem Zusatzadressen für einen Partner geladen werden.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="partnerId" type="pi:WsPartnerIdType" minOccurs="1" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Technischer Schlüssel eines Partners, von welchem die Zusatzdressen geladen werden soll.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="stichtag" type="xsd:date" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Fachlicher Zeitpunkt. Der Parameter ist optional, wird er nicht gesetzt wird der aktuelle Zeitpunkt verwendet</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="GetPartnerZusatzadressenResponseType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Response, in dem die zu den Partern geladenen Zusatzadressen enthalten sind.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="partnerZusatzadressen" type="tns:WsPartnerZusatzadresseType" minOccurs="1" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Liste von PartnerIds mit den zugehörigen Zusatzadressen.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="GetOrganisationseinheitDomiziladresseRequestType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Request, mit dem die Domiziladressen für eine Organisationseinheit geladen werden.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="organisationseinheitId" type="pi:WsOrganisationseinheitIdType" minOccurs="1" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Technischer Schlüssel einer Organisationseinheit, von welcher die Domiziladresse geladen werden soll.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="stichtag" type="xsd:date" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Fachlicher Zeitpunkt. Der Parameter ist optional, wird er nicht gesetzt wird der aktuelle Zeitpunkt verwendet</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="GetOrganisationseinheitDomiziladresseResponseType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Response, in dem die zu den Organisationseinheiten geladenen Domiziladressen enthalten sind.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="organisationseinheitDomiziladressen" type="tns:WsOrganisationseinheitDomiziladresseType" minOccurs="1" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Liste von OrganisationseinheitIds mit den zugehörigen Domiziladressen.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="GetLeistungserbringerZusatzadressenRequestType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Request, mit den Zusatzadressen für einen Leistungserbringer geladen werden.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="leistungserbringerId" type="pi:WsLeistungserbringerIdType" minOccurs="1" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Technischer Schlüssel eines Leistungserbringers, von welchem die Zusatzdressen geladen werden soll.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="stichtag" type="xsd:date" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Fachlicher Zeitpunkt. Der Parameter ist optional, wird er nicht gesetzt wird der aktuelle Zeitpunkt verwendet</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="GetLeistungserbringerZusatzadressenResponseType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Response, in dem die zu den Leistungserbringern geladenen Zusatzadressen enthalten sind.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="leistungserbringerZusatzadressen" type="tns:WsLeistungserbringerZusatzadresseType" minOccurs="1" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Liste von LeistungserbringerIds mit den zugehörigen Zusatzadressen.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="GetOrganisationseinheitZusatzadressenRequestType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Request, mit den Zusatzadressen für eine Organisationseinheit geladen werden.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="organisationseinheitId" type="pi:WsOrganisationseinheitIdType" minOccurs="1" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Technischer Schlüssel einer Organisationseinheit, von welchem die Zusatzdressen geladen werden soll.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="stichtag" type="xsd:date" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Fachlicher Zeitpunkt. Der Parameter ist optional, wird er nicht gesetzt wird der aktuelle Zeitpunkt verwendet</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="GetOrganisationseinheitZusatzadressenResponseType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Response, in dem die zu den Organisationseinheiten geladenen Zusatzadressen enthalten sind.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="organisationseinheitZusatzadressen" type="tns:WsOrganisationseinheitZusatzadresseType" minOccurs="1" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Liste von OrganisationseinheitIds mit den zugehörigen Zusatzadressen.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="WsPartnerAdresseType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">PartnerId mit den zugehörigen Adressen (Domizil- und Zusatzadresse).</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="partnerId" type="pi:WsPartnerIdType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Technischer Schlüssel eines Partners.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="adressen" type="tns:WsAdresseType" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Liste von Adressen (Domizil- und Zusatzadresse).</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="WsAdresseType" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Abstrakte Adresse für die gemeinsamen Eigenschaften von Domizil- oder Zusatzadressen.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ct:WsHistObjectType">
+                <xsd:sequence>
+                    <xsd:element name="id" type="pi:WsAdresseIdType" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="de">Technischer Schlüssel einer Domizil- oder Zusatzadresse.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="bemerkungen" type="st:StringType" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="de">Bemerkung zu einer Adresse.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="hausId" type="st:StringType" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="de">Fachlicher Schlüssel auf die Hausnummer in den Adressstammdaten.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="hausNrZusatz" type="st:StringType" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="de">Zusatz der Hausnummer.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="hausnummer" type="st:StringType" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="de">Hausnummer der Adresse.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="land" type="st:StringType" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="de">Land der Adresse.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="ort" type="st:StringType" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="de">Ort der Adresse.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="plz" type="st:StringType" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="de">Postleitzahl der Adresse.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="plzId" type="st:StringType" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="de">Fachlicher Schlüssel auf die Postleitzahl inkl. Zusatz in den Adressstammdaten.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="plzZusatz" type="st:StringType" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="de">Zusatz der Postleitzahl der Adresse.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="postfach" type="st:StringType" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="de">Postfach der Adresse.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="postfachOhneNr" type="pc:WsPostfachOhneNrCodeType" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="de">Bestimmt, ob es sich um eine Postfach-Adresse ohne Postfachnummer handelt.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="zusatz1VorStr" type="st:StringType" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="de">Adressezusatz1 welcher vor der Strasse steht.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="zusatz2VorStr" type="st:StringType" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="de">Adressezusatz2 welcher vor der Strasse steht.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="zusatz3VorStr" type="st:StringType" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="de">Adressezusatz3 welcher vor der Strasse steht.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="zusatz4VorStr" type="st:StringType" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="de">Adressezusatz4 welcher vor der Strasse steht.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="strasse" type="st:StringType" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="de">Strasse der Adresse.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="strasseId" type="st:StringType" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="de">Fachlicher Schlüssel auf die Strasse in den Adressstammdaten.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="zusatz1NachStr" type="st:StringType" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="de">Adressezusatz1 welcher nach der Strasse steht.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="zusatz2NachStr" type="st:StringType" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="de">Adressezusatz2 welcher nach der Strasse steht.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="strasseNrReihenfolge" type="pc:WsStrasseNrReihenfolgeCodeType" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="de">Definiert, ob die Strasse vor der Nummer angezeigt werden soll oder umgekehrt.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="adressrollen" type="tns:WsAdressrolleType" minOccurs="0" maxOccurs="unbounded">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="de">Liste mit allen Adressrollen der Adresse.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsPartnerDomiziladresseType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">PartnerId mit der zugehörigen Domiziladressen.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="partnerId" type="pi:WsPartnerIdType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Technischer Schlüssel eines Partners.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="domiziladresse" type="tns:WsDomiziladresseType" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Zur partnerId gehörende Domiziladresse.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="WsLeistungserbringerDomiziladresseType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">LeistungserbringerId mit der zugehörigen Domiziladressen.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="leistungserbringerId" type="pi:WsLeistungserbringerIdType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Technischer Schlüssel eines Leistungserbringers.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="domiziladresse" type="tns:WsDomiziladresseType" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Zur leistungserbringerId gehörende Domiziladresse.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="WsOrganisationseinheitDomiziladresseType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">OrganisationseinheitId mit der zugehörigen Domiziladressen.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="organisationseinheitId" type="pi:WsOrganisationseinheitIdType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Technischer Schlüssel einer Organisationseinheit.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="domiziladresse" type="tns:WsDomiziladresseType" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Zur OrganisationseinheitId gehörende Domiziladresse.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="WsDomiziladresseType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Domiziladresse eines Partners.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="tns:WsAdresseType">
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsPartnerZusatzadresseType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">PartnerId mit der zugehörigen Zusatzadressen.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="partnerId" type="pi:WsPartnerIdType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Technischer Schlüssel eines Partners.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="zusatzadressen" type="tns:WsZusatzadresseType" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Zur partnerId gehörende Zusatzadressen.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="WsLeistungserbringerZusatzadresseType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">LeistungserbringerId mit der zugehörigen Zusatzadressen.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="leistungserbringerId" type="pi:WsLeistungserbringerIdType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Technischer Schlüssel eines Leistungserbringers.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="zusatzadressen" type="tns:WsZusatzadresseType" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Zur leistungserbringerId gehörende Zusatzadressen.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="WsOrganisationseinheitZusatzadresseType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">OrganisationseinheitId mit der zugehörigen Zusatzadressen.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="organisationseinheitId" type="pi:WsOrganisationseinheitIdType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Technischer Schlüssel einer Organisationseinheit.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="zusatzadressen" type="tns:WsZusatzadresseType" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Zur organisationseinheitId gehörende Zusatzadressen.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="WsZusatzadresseType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Zusatzadresse eines Partners.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="tns:WsAdresseType">
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WsAdressrolleType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Adressrolle einer Adresse.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="ct:WsHistObjectType">
+                <xsd:sequence>
+                    <xsd:element name="id" type="pi:WsAdressrolleIdType" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="de">Technischer Schlüssel der Adressrolle.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="adressrolleDefId" type="pi:WsAdressrolleDefIdType" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="de">Adressrollendefinition der Adressrolle.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="mutationsgrundId" type="pi:WsMutationsgrundIdType" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="de">Mutationsgrund der Adressrolle.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+</xsd:schema>

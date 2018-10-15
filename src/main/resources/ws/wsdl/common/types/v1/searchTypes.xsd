@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="urn:com:adcubum:syrius:api:common:searchTypes:v1"
+            xmlns:tns="urn:com:adcubum:syrius:api:common:searchTypes:v1"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:st="urn:com:adcubum:syrius:api:common:simpleTypes:v_1_0"
+            xmlns:xhtml="http://www.w3.org/1999/xhtml"
+            elementFormDefault="qualified">
+
+    <xsd:import namespace="urn:com:adcubum:syrius:api:common:simpleTypes:v_1_0" schemaLocation="../../types/v_1_0/simpleTypes.xsd"/>
+
+    <xsd:complexType name="WsSearchConditionType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Technische Suchbedingungen für einen Suchrequest.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="searchDate" type="xsd:date" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Fachlicher Suchzeitpunkt. Der Parameter ist optional, wird er nicht gesetzt wird der aktuelle Zeitpunkt verwendet.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="fetchStart" type="xsd:int" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Bei welcher Zeile (Nr.) soll die Suche beginnen (erste Zeile = 0).</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="maxFetchSize" type="xsd:int" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Wie viele Zeilen sollen maximal im Resultat enthalten sein. Sind mehr als die max. Anzahl Resultate vorhanden, wird 'maxFetchSize' + 1 Objekt geliefert.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="WsStringSearchType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Enthält den Text für eine Suche auf einem Textfeld.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="string" type="st:StringType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Der Suchtext.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="operator" type="tns:StringOperatorStringType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Operator der Suchbedingung.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="WsDateSearchType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Enthält das Datum für eine Suche auf einem Datumsfeld.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="date" type="st:DateType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Das Suchdatum.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="operator" type="tns:DateOperatorStringType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Operator der Suchbedingung.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="WsTimestampSearchType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Enthält das Datum für eine Suche auf einem Datumsfeld (inkl. Zeit- und Zoneninformation).</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="timestamp" type="st:TimestampType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Das Suchdatum (mit Zeit- und Zoneninformation).</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="operator" type="tns:DateOperatorStringType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Operator der Suchbedingung.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="WsDecimalSearchType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Enthält den Wert für eine Suche auf einer Dezimalzahl.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="decimal" type="st:DecimalType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Der Suchwert.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="operator" type="tns:NumberOperatorStringType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Operator der Suchbedingung.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="WsIntegerSearchType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Enthält den Wert für eine Suche auf einer Ganzzahl.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="integer" type="st:IntegerType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Der Suchwert.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="operator" type="tns:NumberOperatorStringType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Operator der Suchbedingung.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="WsDateTimeSearchType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Enthält das Datum für eine Suche auf einem Datumsfeld (mit Zeit-, aber ohne Zoneninformation).</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="dateTime" type="st:DateTimeType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Das Suchdatum (mit Zeit- und Zoneninformation).</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="operator" type="tns:DateOperatorStringType" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">Operator der Suchbedingung.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:simpleType name="StringOperatorStringType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Operator einer Suche auf einem Textfeld.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="eq">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">
+                        equal
+                        <xhtml:br/>Der Text muss exakt mit dem Suchtext übereinstimmen.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="neq">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">
+                        not equal
+                        <xhtml:br/>Der Text darf nicht mit dem Suchtext übereinstimmen.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="like">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">
+                        like
+                        <xhtml:br/>Die Suche wird mit einem 'LIKE' ausgeführt. Allfällige Platzhalter ('%' o.ä.) müssen im Suchtext enthalten sein.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="nlike">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">
+                        not like
+                        <xhtml:br/>Die Suche wird mit einem 'NOT LIKE' ausgeführt. Allfällige Platzhalter ('%' o.ä.) müssen im Suchtext enthalten sein.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:simpleType name="DateOperatorStringType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Operator einer Suche auf einem Datumsfeld.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="eq">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">
+                        equal
+                        <xhtml:br/>Das Datum muss exakt mit dem Suchdatum übereinstimmen.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="neq">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">
+                        not equal
+                        <xhtml:br/>Das Datum darf nicht mit dem Suchdatum übereinstimmen.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="gt">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">
+                        greater then
+                        <xhtml:br/>Das Datum muss grösser als das Suchdatum sein.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="lt">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">
+                        less then
+                        <xhtml:br/>Das Datum muss kleiner als das Suchdatum sein.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="gte">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">
+                        greater then equal
+                        <xhtml:br/>Das Datum muss grösser oder gleich wie das Suchdatum sein.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="lte">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">
+                        less then equal
+                        <xhtml:br/>Das Datum muss kleiner oder gleich wie das Suchdatum sein.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:simpleType name="NumberOperatorStringType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="de">Operator einer Suche auf einem Zahlenwert.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="eq">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">
+                        equal
+                        <xhtml:br/>Der Zahlenwert muss exakt mit dem Suchwert übereinstimmen.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="neq">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">
+                        not equal
+                        <xhtml:br/>Der Zahlenwert darf nicht mit dem Suchwert übereinstimmen.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="gt">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">
+                        greater then
+                        <xhtml:br/>Der Zahlenwert muss grösser als der Suchwert sein.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="lt">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">
+                        less then
+                        <xhtml:br/>Der Zahlenwert muss kleiner als der Suchwert sein.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="gte">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">
+                        greater then equal
+                        <xhtml:br/>Der Zahlenwert muss grösser oder gleich wie der Suchwert sein.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="lte">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="de">
+                        less then equal
+                        <xhtml:br/>Der Zahlenwert muss kleiner oder gleich wie der Suchwert sein.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+</xsd:schema>

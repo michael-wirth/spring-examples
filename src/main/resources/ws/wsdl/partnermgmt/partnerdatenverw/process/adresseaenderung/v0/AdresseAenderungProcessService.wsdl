@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="AdresseAenderungProcessService"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  targetNamespace="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:process:adresseaenderung:v0"
+                  xmlns:tns="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:process:adresseaenderung:v0"
+                  xmlns:pa="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:process:adresseaenderung:v0:schema"
+                  xmlns:flt="urn:com:adcubum:syrius:api:common:faults:v_1_0"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/">
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="urn:com:adcubum:syrius:api:partnermgmt:partnerdatenverw:process:adresseaenderung:v0:schema" schemaLocation="schema/AdresseAenderungProcessService.xsd"/>
+            <xsd:import namespace="urn:com:adcubum:syrius:api:common:faults:v_1_0" schemaLocation="../../../../../common/faults/v_1_0/faults.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="AdresseAenderungRequestMessage">
+        <wsdl:part name="Request" element="pa:adresseAenderungRequest"/>
+    </wsdl:message>
+    <wsdl:message name="AdresseAenderungResponseMessage">
+        <wsdl:part name="Response" element="pa:adresseAenderungResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ApiFault">
+        <wsdl:part name="fault" element="flt:apiFaultInfo"/>
+    </wsdl:message>
+    <wsdl:portType name="AdresseAenderungProcessServicePortType">
+        <wsdl:operation name="createAdresseAenderung">
+            <wsdl:documentation>Erstellt ein AdresseAenderung-Objekt zu einer bestehenden Adresse.</wsdl:documentation>
+            <wsdl:input name="AdresseAenderungRequest" message="tns:AdresseAenderungRequestMessage"/>
+            <wsdl:output name="AdresseAenderungResponse" message="tns:AdresseAenderungResponseMessage"/>
+            <wsdl:fault name="ApiFault" message="tns:ApiFault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="AdresseAenderungProcessServiceBinding" type="tns:AdresseAenderungProcessServicePortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="createAdresseAenderung">
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="AdresseAenderungRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="AdresseAenderungResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ApiFault">
+                <soap:fault name="ApiFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="AdresseAenderungProcessService_v0">
+        <wsdl:port name="AdresseAenderungProcessService" binding="tns:AdresseAenderungProcessServiceBinding">
+            <soap:address location="https://example.com/AdresseAenderungProcessService_v0"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
