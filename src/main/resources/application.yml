@@ -1,0 +1,22 @@
+api:
+  bridge:
+    request-context-paths:
+      - com.adcubum.syrius.api.partnermgmt.partnerdatenverw.data.partneridentifikator.v0.schema
+      - com.adcubum.syrius.api.partnermgmt.common.identifier.v0
+    response-context-paths:
+      - com.adcubum.syrius.api.partnermgmt.partnerdatenverw.data.partneridentifikator.v0.schema
+      - com.adcubum.syrius.api.partnermgmt.common.identifier.v0
+    base-uri: http://scooterlabs.com/echo
+    
+url: http://apibridge.syrius-poc.hel.kko.ch/apibridge-partnermgmt/PartnerService_v1
+
+webservices:
+  security:
+    issuer: http://services.myhelsana-test.hel.kko.ch
+    subject: HF1EV
+    ttl-seconds: 300
+    keystore:
+      location: classpath:ws/certificate/soap_developer_Identity.jks
+      alias: soap_developer
+      password: changeit
+      private-key-password: HkOFFGLOjEC8

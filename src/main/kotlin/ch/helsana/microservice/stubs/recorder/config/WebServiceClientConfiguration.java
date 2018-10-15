@@ -45,7 +45,7 @@ public class WebServiceClientConfiguration {
 
     @Bean
     ApiBridgeClient apiBridgeClient(WebServiceMessageFactory webServiceMessageFactory, Wss4jSecurityInterceptor wss4jSecurityInterceptor) {
-        ApiBridgeClient customerClient = new ApiBridgeClient(webServiceMessageFactory, wss4jSecurityInterceptor);
+        ApiBridgeClient customerClient = new ApiBridgeClient(webServiceMessageFactory, wss4jSecurityInterceptor, apiBridgeProperties.baseUri);
         customerClient.setMarshaller(customerServiceMarshaller());
         customerClient.setUnmarshaller(customerServiceUnmarshaller());
         return customerClient;

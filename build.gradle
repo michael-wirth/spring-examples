@@ -22,6 +22,8 @@ apply plugin: 'io.spring.dependency-management'
 group = 'ch.helsana.microservice.stubs'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
 compileKotlin {
     kotlinOptions {
         freeCompilerArgs = ["-Xjsr305=strict"]
@@ -58,9 +60,10 @@ task genJaxb {
             mkdir(dir: sourcesDir)
             mkdir(dir: classesDir)
 
-            xjc(destdir: sourcesDir) {
+            xjc(destdir: sourcesDir, binding: "${projectDir}/src/main/resources/ws/xjb/binding.xjb", extension: true) {
                 schema(dir: "${schemaDir}", includes: '**/*.wsdl')
                 arg(value: "-wsdl")
+//                arg(value: "-Xannotate")
                 produces(dir: sourcesDir, includes: "**/*.java")
             }
 
@@ -89,7 +92,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation(files(genJaxb.classesDir).builtBy(genJaxb))
-    
+
     testImplementation('org.springframework.boot:spring-boot-starter-test')
 
     jaxb "com.sun.xml.bind:jaxb-xjc:2.1.7"

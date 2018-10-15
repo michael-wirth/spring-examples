@@ -1,27 +1,30 @@
 package ch.helsana.microservice.stubs.recorder.client
 
-import com.adcubum.syrius.api.partnermgmt.common.identifier.v0.WsPartneridentifikatorIdType
-import com.adcubum.syrius.api.partnermgmt.partnerdatenverw.data.partneridentifikator.v0.schema.GetPartneridentifikatorRequestType
-import com.adcubum.syrius.api.partnermgmt.partnerdatenverw.data.partneridentifikator.v0.schema.GetPartneridentifikatorResponseType
-import com.adcubum.syrius.api.partnermgmt.partnerdatenverw.data.partneridentifikator.v0.schema.SearchOnlineIdRequestType
-import com.adcubum.syrius.api.partnermgmt.partnerdatenverw.data.partneridentifikator.v0.schema.SearchOnlineIdResponseType
+import com.adcubum.syrius.api.partnermgmt.partnerdatenverw.data.partneridentifikator.v0.schema.GetPartneridentifikatorRequest
+import com.adcubum.syrius.api.partnermgmt.partnerdatenverw.data.partneridentifikator.v0.schema.GetPartneridentifikatorResponse
+import com.adcubum.syrius.api.partnermgmt.partnerdatenverw.data.partneridentifikator.v0.schema.SearchOnlineIdRequest
+import com.adcubum.syrius.api.partnermgmt.partnerdatenverw.data.partneridentifikator.v0.schema.SearchOnlineIdResponse
 import org.springframework.ws.WebServiceMessageFactory
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport
 import org.springframework.ws.soap.security.wss4j2.Wss4jSecurityInterceptor
+import javax.xml.datatype.DatatypeFactory
 
-class ApiBridgeClient(webServiceMessageFactory: WebServiceMessageFactory, wss4jSecurityInterceptor: Wss4jSecurityInterceptor) :
+class ApiBridgeClient(webServiceMessageFactory: WebServiceMessageFactory, wss4jSecurityInterceptor: Wss4jSecurityInterceptor, defaultUri: String) :
         WebServiceGatewaySupport(webServiceMessageFactory) {
     init {
-        this.webServiceTemplate.interceptors = arrayOf(wss4jSecurityInterceptor)
+        webServiceTemplate.interceptors = arrayOf(wss4jSecurityInterceptor, LogHttpHeaderClientInterceptor())
+        webServiceTemplate.defaultUri = defaultUri
     }
 
-    fun getPartneridentifikatorResponse(portalKontoId :String): GetPartneridentifikatorResponseType {
-        val searchOnlineIdRequestType  = SearchOnlineIdRequestType()
+    fun getPartneridentifikatorResponse(portalKontoId: String): GetPartneridentifikatorResponse {
+        val searchOnlineIdRequestType = SearchOnlineIdRequest()
         searchOnlineIdRequestType.wert = portalKontoId
-        val searchOnlineIdResponseType = webServiceTemplate.marshalSendAndReceive(searchOnlineIdRequestType) as SearchOnlineIdResponseType
+        val searchOnlineIdResponseType = webServiceTemplate.marshalSendAndReceive(searchOnlineIdRequestType) as SearchOnlineIdResponse
+//        val searchOnlineIdResponseType = webServiceTemplate.marshalSendAndReceive("apibridge-partnermgmt/PartnerService_v1", searchOnlineIdRequestType) as SearchOnlineIdResponseType
 
-        val getPartneridentifikatorRequestType = GetPartneridentifikatorRequestType()
-        getPartneridentifikatorRequestType.partneridentifikatorId + searchOnlineIdResponseType.partneridentifikatorId
-        return this.webServiceTemplate.marshalSendAndReceive(getPartneridentifikatorRequestType) as GetPartneridentifikatorResponseType
+        val getPartneridentifikatorRequest = GetPartneridentifikatorRequest()
+        getPartneridentifikatorRequest.partneridentifikatorIds + searchOnlineIdResponseType.partneridentifikatorId
+        getPartneridentifikatorRequest.stichtag = DatatypeFactory.newInstance().newXMLGregorianCalendar()
+        return this.webServiceTemplate.marshalSendAndReceive("apibridge-partnermgmt/PartnerService_v1", getPartneridentifikatorRequest) as GetPartneridentifikatorResponse
     }
 }
