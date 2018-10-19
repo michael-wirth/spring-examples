@@ -14,9 +14,8 @@ import com.adcubum.syrius.api.partnermgmt.partnerdatenverw.data.partneridentifik
 import org.springframework.ws.WebServiceMessageFactory
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport
 import org.springframework.ws.client.support.interceptor.ClientInterceptor
-import java.util.GregorianCalendar
+import java.util.*
 import javax.xml.datatype.DatatypeFactory
-
 
 class ApiBridgeClient(webServiceMessageFactory: WebServiceMessageFactory, defaultUri: String, vararg clientInterceptor: ClientInterceptor) :
         WebServiceGatewaySupport(webServiceMessageFactory) {
@@ -43,12 +42,12 @@ class ApiBridgeClient(webServiceMessageFactory: WebServiceMessageFactory, defaul
         }
     }
 
-    fun getPartner(partnerId: String) : WsPartnerType {
+    fun getPartner(partnerId: String): WsPartnerType {
         val getPartnerRequest = GetPartnerRequest(listOf(WsPartnerIdType(partnerId)), stichtag())
         return (webServiceTemplate.marshalSendAndReceive(partnerService, getPartnerRequest) as GetPartnerResponse).partners.first()
     }
 
-    fun getFamilie(partnerId: String) : WsFamilieType {
+    fun getFamilie(partnerId: String): WsFamilieType {
         val getFamilieRequest = GetFamilieRequest(listOf(WsPartnerIdType(partnerId)), stichtag())
         return (webServiceTemplate.marshalSendAndReceive(partnerService, getFamilieRequest) as GetFamilieResponse).families.first()
     }

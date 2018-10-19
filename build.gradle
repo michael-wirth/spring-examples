@@ -117,7 +117,8 @@ dependencies {
     implementation('org.springframework.ws:spring-ws-security')
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation(files(genJaxb.classesDir).builtBy(genJaxb))
+    implementation(files(genJaxb.classesDir))
+        //.builtBy(genJaxb))
 
     testImplementation('org.springframework.boot:spring-boot-starter-test')
     testImplementation('org.springframework.ws:spring-ws-test')

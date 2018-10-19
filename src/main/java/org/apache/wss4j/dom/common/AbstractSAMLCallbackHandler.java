@@ -19,20 +19,11 @@
 
 package org.apache.wss4j.dom.common;
 
-import org.apache.wss4j.dom.WSConstants;
 import org.apache.wss4j.common.crypto.Crypto;
 import org.apache.wss4j.common.saml.SAMLCallback;
-import org.apache.wss4j.common.saml.bean.ActionBean;
-import org.apache.wss4j.common.saml.bean.AttributeBean;
-import org.apache.wss4j.common.saml.bean.AttributeStatementBean;
-import org.apache.wss4j.common.saml.bean.AuthDecisionStatementBean;
-import org.apache.wss4j.common.saml.bean.AuthenticationStatementBean;
-import org.apache.wss4j.common.saml.bean.ConditionsBean;
-import org.apache.wss4j.common.saml.bean.KeyInfoBean;
+import org.apache.wss4j.common.saml.bean.*;
 import org.apache.wss4j.common.saml.bean.KeyInfoBean.CERT_IDENTIFIER;
-import org.apache.wss4j.common.saml.bean.SubjectBean;
-import org.apache.wss4j.common.saml.bean.SubjectConfirmationDataBean;
-import org.apache.wss4j.common.saml.bean.SubjectLocalityBean;
+import org.apache.wss4j.dom.WSConstants;
 import org.apache.wss4j.dom.message.WSSecEncryptedKey;
 import org.joda.time.DateTime;
 import org.w3c.dom.Document;
@@ -41,7 +32,6 @@ import org.w3c.dom.Element;
 import javax.security.auth.callback.CallbackHandler;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.Collections;
