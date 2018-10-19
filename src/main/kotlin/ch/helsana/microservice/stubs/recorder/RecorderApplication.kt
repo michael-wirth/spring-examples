@@ -12,7 +12,11 @@ class RecorderApplication : CommandLineRunner {
     lateinit var apiBridgeClient: ApiBridgeClient
 
     override fun run(vararg args: String?) {
-        apiBridgeClient.getPartneridentifikatorResponse("A1031934")
+        val partnerId = apiBridgeClient.resolvePortalKontoId("A1031934")
+        partnerId?.apply {
+            println(apiBridgeClient.getPartner(this))
+            println(apiBridgeClient.getFamilie(this).mitglieders.size + 1)
+        }
     }
 }
 

@@ -30,24 +30,17 @@ public class WebServiceClientConfiguration {
     }
 
     @Bean
-    Jaxb2Marshaller customerServiceMarshaller() {
+    Jaxb2Marshaller apiBridgeMarshaller() {
         Jaxb2Marshaller jaxb2Marshaller = new Jaxb2Marshaller();
-        jaxb2Marshaller.setContextPaths(apiBridgeProperties.getRequestContextPaths().toArray(new String[0]));
+        jaxb2Marshaller.setContextPaths(apiBridgeProperties.getContextPaths().toArray(new String[0]));
         return jaxb2Marshaller;
     }
 
     @Bean
-    Jaxb2Marshaller customerServiceUnmarshaller() {
-        Jaxb2Marshaller jaxb2Marshaller = new Jaxb2Marshaller();
-        jaxb2Marshaller.setContextPaths(apiBridgeProperties.getResponseContextPaths().toArray(new String[0]));
-        return jaxb2Marshaller;
-    }
-
-    @Bean
-    ApiBridgeClient apiBridgeClient(WebServiceMessageFactory webServiceMessageFactory, Wss4jSecurityInterceptor wss4jSecurityInterceptor) {
-        ApiBridgeClient customerClient = new ApiBridgeClient(webServiceMessageFactory, wss4jSecurityInterceptor, apiBridgeProperties.baseUri);
-        customerClient.setMarshaller(customerServiceMarshaller());
-        customerClient.setUnmarshaller(customerServiceUnmarshaller());
+    ApiBridgeClient apiBridgeClient(WebServiceMessageFactory webServiceMessageFactory, Jaxb2Marshaller apiBridgeMarshaller, Wss4jSecurityInterceptor wss4jSecurityInterceptor) {
+        ApiBridgeClient customerClient = new ApiBridgeClient(webServiceMessageFactory, apiBridgeProperties.baseUri, wss4jSecurityInterceptor);
+        customerClient.setMarshaller(apiBridgeMarshaller);
+        customerClient.setUnmarshaller(apiBridgeMarshaller);
         return customerClient;
     }
 

@@ -2,6 +2,7 @@ buildscript {
     ext {
         kotlinVersion = '1.2.71'
         springBootVersion = '2.0.5.RELEASE'
+        jaxbVersion ='2.2.11'
     }
     repositories {
         mavenCentral()
@@ -50,26 +51,51 @@ task genJaxb {
     ext.sourcesDir = "${buildDir}/generated-sources/jaxb"
     ext.classesDir = "${buildDir}/classes/jaxb"
     ext.schemaDir = "${projectDir}/src/main/resources/ws/wsdl"
-
+    ext.schemas = [
+        'http://apibridge.syrius-entwicklung.hel.kko.ch/apibridge-partnermgmt/PartneridentifikatorService_v1?wsdl',
+        'http://apibridge.syrius-entwicklung.hel.kko.ch/apibridge-partnermgmt/PartnerService_v1?wsdl',
+        'http://apibridge.syrius-entwicklung.hel.kko.ch/apibridge-partnermgmt/OrganisationseinheitService_v1?wsdl',
+        'http://apibridge.syrius-entwicklung.hel.kko.ch/apibridge-partnermgmt/OeZuteilungService_v1?wsdl',
+        'http://apibridge.syrius-entwicklung.hel.kko.ch/apibridge-partnermgmt/AdresseService_v1?wsdl',
+        'http://apibridge.syrius-entwicklung.hel.kko.ch/apibridge-partnermgmt/EmailService_v1?wsdl',
+        'http://apibridge.syrius-entwicklung.hel.kko.ch/apibridge-partnermgmt/TelefonService_v1?wsdl',
+        'http://apibridge.syrius-entwicklung.hel.kko.ch/apibridge-bestandsverw/VertragService_v1?wsdl',
+        'http://apibridge.syrius-entwicklung.hel.kko.ch/apibridge-bestandsverw/VersichertesObjektService_v1?wsdl',
+        'http://apibridge.syrius-entwicklung.hel.kko.ch/apibridge-bestandsverw/VersichertenkarteService_v1?wsdl',
+        'http://apibridge.syrius-entwicklung.hel.kko.ch/apibridge-produktmgmt/ProduktService_v1?wsdl',
+        'http://apibridge.syrius-entwicklung.hel.kko.ch/apibridge-schadenleistungsmgmt/KostenbeteiligungService_v1?wsdl',
+        'http://apibridge.syrius-entwicklung.hel.kko.ch/apibridge-infrastructure/CodeService_v1?wsdl',
+        'http://apibridge.syrius-entwicklung.hel.kko.ch/apibridge-partnermgmt/BankService_v1?wsdl'
+    ]
     outputs.dir classesDir
 
     doLast() {
-        project.ant {
-            taskdef name: "xjc", classname: "com.sun.tools.xjc.XJCTask",
-                classpath: configurations.jaxb.asPath
-            mkdir(dir: sourcesDir)
-            mkdir(dir: classesDir)
+        mkdir sourcesDir
+        mkdir classesDir
+        println configurations.jaxb.asPath
 
-            xjc(destdir: sourcesDir, binding: "${projectDir}/src/main/resources/ws/xjb/binding.xjb", extension: true) {
-                schema(dir: "${schemaDir}", includes: '**/*.wsdl')
-                arg(value: "-wsdl")
-//                arg(value: "-Xannotate")
-                produces(dir: sourcesDir, includes: "**/*.java")
+        schemas.each {
+            ext.schema = it
+            logger.error("Generate sources for $schema")
+            ant {
+                taskdef name: 'xjc', classname: 'org.jvnet.jaxb2_commons.xjc.XJC2Task',
+                    classpath: configurations.jaxb.asPath
+
+                xjc(destdir: sourcesDir,
+                    schema: schema,
+                    binding: "${projectDir}/src/main/resources/ws/xjb/binding.xjb",
+                    extension: true) {
+                    arg(value: '-wsdl')
+                    arg(value: '-Xvalue-constructor')
+                }
             }
+        }
 
+        ant {
             javac(destdir: classesDir, source: 1.8, target: 1.8, debug: true,
                 debugLevel: "lines,vars,source",
-                classpath: configurations.jaxb.asPath) {
+                classpath: configurations.jaxb.asPath,
+                includeantruntime: false) {
                 src(path: sourcesDir)
                 include(name: "**/*.java")
                 include(name: "*.java")
@@ -94,6 +120,14 @@ dependencies {
     implementation(files(genJaxb.classesDir).builtBy(genJaxb))
 
     testImplementation('org.springframework.boot:spring-boot-starter-test')
+    testImplementation('org.springframework.ws:spring-ws-test')
 
-    jaxb "com.sun.xml.bind:jaxb-xjc:2.1.7"
+    jaxb "javax.xml.bind:jaxb-api:${jaxbVersion}"
+    jaxb "com.sun.xml.bind:jaxb-core:${jaxbVersion}"
+    jaxb "com.sun.xml.bind:jaxb-impl:${jaxbVersion}"
+    jaxb "com.sun.xml.bind:jaxb-xjc:${jaxbVersion}"
+    jaxb 'org.jvnet.jaxb2_commons:jaxb2-basics:1.11.1'
+    jaxb 'org.jvnet.jaxb2_commons:jaxb2-basics-ant:1.11.1'
+    jaxb 'org.jvnet.jaxb2_commons:jaxb2-value-constructor:3.0'
+
 }

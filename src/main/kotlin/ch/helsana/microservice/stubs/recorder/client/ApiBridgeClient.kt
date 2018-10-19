@@ -1,30 +1,57 @@
 package ch.helsana.microservice.stubs.recorder.client
 
-import com.adcubum.syrius.api.partnermgmt.partnerdatenverw.data.partneridentifikator.v0.schema.GetPartneridentifikatorRequest
-import com.adcubum.syrius.api.partnermgmt.partnerdatenverw.data.partneridentifikator.v0.schema.GetPartneridentifikatorResponse
-import com.adcubum.syrius.api.partnermgmt.partnerdatenverw.data.partneridentifikator.v0.schema.SearchOnlineIdRequest
-import com.adcubum.syrius.api.partnermgmt.partnerdatenverw.data.partneridentifikator.v0.schema.SearchOnlineIdResponse
+import com.adcubum.syrius.api.partnermgmt.common.identifier.v1.WsPartnerIdType
+import com.adcubum.syrius.api.partnermgmt.partnerdatenverw.data.partner.v1.schema.GetFamilieRequest
+import com.adcubum.syrius.api.partnermgmt.partnerdatenverw.data.partner.v1.schema.GetFamilieResponse
+import com.adcubum.syrius.api.partnermgmt.partnerdatenverw.data.partner.v1.schema.GetPartnerRequest
+import com.adcubum.syrius.api.partnermgmt.partnerdatenverw.data.partner.v1.schema.GetPartnerResponse
+import com.adcubum.syrius.api.partnermgmt.partnerdatenverw.data.partner.v1.schema.WsFamilieType
+import com.adcubum.syrius.api.partnermgmt.partnerdatenverw.data.partner.v1.schema.WsPartnerType
+import com.adcubum.syrius.api.partnermgmt.partnerdatenverw.data.partneridentifikator.v1.schema.GetPartneridentifikatorRequest
+import com.adcubum.syrius.api.partnermgmt.partnerdatenverw.data.partneridentifikator.v1.schema.GetPartneridentifikatorResponse
+import com.adcubum.syrius.api.partnermgmt.partnerdatenverw.data.partneridentifikator.v1.schema.SearchOnlineIdRequest
+import com.adcubum.syrius.api.partnermgmt.partnerdatenverw.data.partneridentifikator.v1.schema.SearchOnlineIdResponse
 import org.springframework.ws.WebServiceMessageFactory
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport
-import org.springframework.ws.soap.security.wss4j2.Wss4jSecurityInterceptor
+import org.springframework.ws.client.support.interceptor.ClientInterceptor
+import java.util.GregorianCalendar
 import javax.xml.datatype.DatatypeFactory
 
-class ApiBridgeClient(webServiceMessageFactory: WebServiceMessageFactory, wss4jSecurityInterceptor: Wss4jSecurityInterceptor, defaultUri: String) :
+
+class ApiBridgeClient(webServiceMessageFactory: WebServiceMessageFactory, defaultUri: String, vararg clientInterceptor: ClientInterceptor) :
         WebServiceGatewaySupport(webServiceMessageFactory) {
+
     init {
-        webServiceTemplate.interceptors = arrayOf(wss4jSecurityInterceptor, LogHttpHeaderClientInterceptor())
+        webServiceTemplate.interceptors = clientInterceptor
         webServiceTemplate.defaultUri = defaultUri
     }
 
-    fun getPartneridentifikatorResponse(portalKontoId: String): GetPartneridentifikatorResponse {
-        val searchOnlineIdRequestType = SearchOnlineIdRequest()
-        searchOnlineIdRequestType.wert = portalKontoId
-        val searchOnlineIdResponseType = webServiceTemplate.marshalSendAndReceive(searchOnlineIdRequestType) as SearchOnlineIdResponse
-//        val searchOnlineIdResponseType = webServiceTemplate.marshalSendAndReceive("apibridge-partnermgmt/PartnerService_v1", searchOnlineIdRequestType) as SearchOnlineIdResponseType
+    val partnerIdentifikatorService = defaultUri + "apibridge-partnermgmt/PartneridentifikatorService_v1"
+    val partnerService = defaultUri + "apibridge-partnermgmt/PartnerService_v1"
+    val datatypeFactory = DatatypeFactory.newInstance()
 
-        val getPartneridentifikatorRequest = GetPartneridentifikatorRequest()
-        getPartneridentifikatorRequest.partneridentifikatorIds + searchOnlineIdResponseType.partneridentifikatorId
-        getPartneridentifikatorRequest.stichtag = DatatypeFactory.newInstance().newXMLGregorianCalendar()
-        return this.webServiceTemplate.marshalSendAndReceive("apibridge-partnermgmt/PartnerService_v1", getPartneridentifikatorRequest) as GetPartneridentifikatorResponse
+    fun resolvePortalKontoId(portalKontoId: String): String? {
+        val searchOnlineIdRequest = SearchOnlineIdRequest(portalKontoId)
+        val searchOnlineIdResponse = webServiceTemplate.marshalSendAndReceive(partnerIdentifikatorService, searchOnlineIdRequest) as SearchOnlineIdResponse
+
+        if (searchOnlineIdResponse.partneridentifikatorId == null) {
+            return null
+        }
+        val getPartneridentifikatorRequest = GetPartneridentifikatorRequest(listOf(searchOnlineIdResponse.partneridentifikatorId), stichtag())
+        return (webServiceTemplate.marshalSendAndReceive(partnerIdentifikatorService, getPartneridentifikatorRequest) as GetPartneridentifikatorResponse).partneridentifikators.firstOrNull()?.run {
+            partnerId.id
+        }
     }
+
+    fun getPartner(partnerId: String) : WsPartnerType {
+        val getPartnerRequest = GetPartnerRequest(listOf(WsPartnerIdType(partnerId)), stichtag())
+        return (webServiceTemplate.marshalSendAndReceive(partnerService, getPartnerRequest) as GetPartnerResponse).partners.first()
+    }
+
+    fun getFamilie(partnerId: String) : WsFamilieType {
+        val getFamilieRequest = GetFamilieRequest(listOf(WsPartnerIdType(partnerId)), stichtag())
+        return (webServiceTemplate.marshalSendAndReceive(partnerService, getFamilieRequest) as GetFamilieResponse).families.first()
+    }
+
+    fun stichtag() = datatypeFactory.newXMLGregorianCalendar(GregorianCalendar())
 }

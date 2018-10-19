@@ -1,18 +1,26 @@
 api:
   bridge:
-    request-context-paths:
-      - com.adcubum.syrius.api.partnermgmt.partnerdatenverw.data.partneridentifikator.v0.schema
-      - com.adcubum.syrius.api.partnermgmt.common.identifier.v0
-    response-context-paths:
-      - com.adcubum.syrius.api.partnermgmt.partnerdatenverw.data.partneridentifikator.v0.schema
-      - com.adcubum.syrius.api.partnermgmt.common.identifier.v0
-    base-uri: http://scooterlabs.com/echo
-    
-url: http://apibridge.syrius-poc.hel.kko.ch/apibridge-partnermgmt/PartnerService_v1
+    context-paths:
+      - com.adcubum.syrius.api.common.identifier.v1
+      - com.adcubum.syrius.api.partnermgmt.common.identifier.v1
+      - com.adcubum.syrius.api.partnermgmt.partnerdatenverw.data.adresse.v1.schema
+      - com.adcubum.syrius.api.partnermgmt.partnerdatenverw.data.email.v1.schema
+      - com.adcubum.syrius.api.partnermgmt.partnerdatenverw.data.oezuteilung.v1.schema
+      - com.adcubum.syrius.api.partnermgmt.partnerdatenverw.data.organisationseinheit.v1.schema
+      - com.adcubum.syrius.api.partnermgmt.partnerdatenverw.data.partner.v1.schema
+      - com.adcubum.syrius.api.partnermgmt.partnerdatenverw.data.partneridentifikator.v1.schema
+      - com.adcubum.syrius.api.partnermgmt.partnerdatenverw.data.telefon.v1.schema
+      - com.adcubum.syrius.api.produktmgmt.produktpflege.produktkatalog.data.produkt.v1.schema
+      - com.adcubum.syrius.api.bestandsverw.vertragsverw.auskunft.data.vertrag.v1.schema
+      - com.adcubum.syrius.api.bestandsverw.vertragsverw.auskunft.data.versichertesobjekt.v1.schema
+      - com.adcubum.syrius.api.bestandsverw.vertragsverw.auskunft.data.versichertenkarte.v1.schema
+      - com.adcubum.syrius.api.schadenleistungsmgmt.leistungserbringung.leistungsberechnung.data.kostenbeteiligung.v1.schema
+#    base-uri: http://apibridge.syrius-entwicklung.hel.kko.ch/
+    base-uri: http://localhost:8080/
 
 webservices:
   security:
-    issuer: http://services.myhelsana-test.hel.kko.ch
+    issuer: http://services.spf-test.hel.kko.ch
     subject: HF1EV
     ttl-seconds: 300
     keystore:
@@ -20,3 +28,7 @@ webservices:
       alias: soap_developer
       password: changeit
       private-key-password: HkOFFGLOjEC8
+
+logging:
+  level:
+    org.springframework.ws.client.MessageTracing: TRACE
