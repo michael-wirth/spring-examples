@@ -12,11 +12,16 @@ class RecorderApplication : CommandLineRunner {
     lateinit var apiBridgeClient: ApiBridgeClient
 
     override fun run(vararg args: String?) {
-//        val partnerId = apiBridgeClient.resolvePortalKontoId("A1031934")
-//        partnerId?.apply {
-//            println(apiBridgeClient.getPartner(this))
-//            println(apiBridgeClient.getFamilie(this).mitglieders.size + 1)
-//        }
+        val partnerId = apiBridgeClient.resolvePortalKontoId("A1031934")
+        partnerId?.apply {
+            println(apiBridgeClient.getPartner(this))
+            val familie = apiBridgeClient.getFamilie(this)
+            println("vorstand")
+            println(familie.vorstand.intBetreuerId.id)
+            println("familie")
+            familie.mitglieders.stream().map { it.intBetreuerId.id }.forEach { println(it) }
+
+        }
     }
 }
 

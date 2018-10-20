@@ -15,8 +15,9 @@ api:
       - com.adcubum.syrius.api.bestandsverw.vertragsverw.auskunft.data.versichertesobjekt.v1.schema
       - com.adcubum.syrius.api.bestandsverw.vertragsverw.auskunft.data.versichertenkarte.v1.schema
       - com.adcubum.syrius.api.schadenleistungsmgmt.leistungserbringung.leistungsberechnung.data.kostenbeteiligung.v1.schema
+    base-uri: http://apibridge.syrius-integration.hel.kko.ch/
 #    base-uri: http://apibridge.syrius-entwicklung.hel.kko.ch/
-    base-uri: http://localhost:8080/
+#    base-uri: http://localhost:8080/
 
 webservices:
   security:

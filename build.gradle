@@ -1,7 +1,7 @@
 buildscript {
     ext {
         kotlinVersion = '1.2.71'
-        springBootVersion = '2.0.5.RELEASE'
+        springBootVersion = '2.0.6.RELEASE'
         jaxbVersion ='2.2.11'
     }
     repositories {
@@ -65,6 +65,7 @@ task genJaxb {
         'http://apibridge.syrius-entwicklung.hel.kko.ch/apibridge-produktmgmt/ProduktService_v1?wsdl',
         'http://apibridge.syrius-entwicklung.hel.kko.ch/apibridge-schadenleistungsmgmt/KostenbeteiligungService_v1?wsdl',
         'http://apibridge.syrius-entwicklung.hel.kko.ch/apibridge-infrastructure/CodeService_v1?wsdl',
+        'http://apibridge.syrius-entwicklung.hel.kko.ch/apibridge-partnermgmt/LeistungserbringerService_v1?wsdl',
         'http://apibridge.syrius-entwicklung.hel.kko.ch/apibridge-partnermgmt/BankService_v1?wsdl'
     ]
     outputs.dir classesDir
