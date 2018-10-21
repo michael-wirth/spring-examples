@@ -32,10 +32,11 @@ class RecorderApplication : CommandLineRunner {
                     .flatMap { it.vertragsproduktes }
                     .map { WsProduktIdType(it.produktId.id) }
                     .toTypedArray())
+            val kollektivvertrag = apiBridgeClient.getKollektivvertrag(*vertrag.map { it.kollektivvertragNamentlichId }.toTypedArray())
             val leistungserbringer = apiBridgeClient.getLeistungserbringer(*versichertesObjekt
                     .flatMap { it.vertragsproduktes }
                     .map { it.leistungserbringerId.id }
-                    .filterNot { it == "" }
+                    .filterNotNull()
                     .map { WsLeistungserbringerIdType(it) }
                     .toTypedArray())
             println("partner: $partner")
@@ -51,6 +52,7 @@ class RecorderApplication : CommandLineRunner {
             println("versichertesObjekt: ${versichertesObjekt.size}")
             println("produkte: ${produkte.size}")
             println("leistungserbringer: ${leistungserbringer.size}")
+            println("kollektivvertrag: ${kollektivvertrag.size}")
         }
     }
 }

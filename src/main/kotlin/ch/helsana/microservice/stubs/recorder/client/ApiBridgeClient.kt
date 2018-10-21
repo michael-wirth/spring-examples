@@ -58,13 +58,11 @@ import com.adcubum.syrius.api.produktmgmt.produktpflege.produktkatalog.data.prod
 import com.adcubum.syrius.api.produktmgmt.produktpflege.produktkatalog.data.produkt.v1.schema.WsProduktType
 import com.adcubum.syrius.api.schadenleistungsmgmt.leistungserbringung.leistungsberechnung.data.kostenbeteiligung.v1.schema.ReadKostenbeteiligungenOfGrundversicherungForPartnerRequest
 import com.adcubum.syrius.api.schadenleistungsmgmt.leistungserbringung.leistungsberechnung.data.kostenbeteiligung.v1.schema.ReadKostenbeteiligungenOfGrundversicherungForPartnerResponse
-import com.adcubum.syrius.api.schadenleistungsmgmt.leistungserbringung.leistungsberechnung.data.kostenbeteiligung.v1.schema.ReadKostenbeteiligungenRequest
-import com.adcubum.syrius.api.schadenleistungsmgmt.leistungserbringung.leistungsberechnung.data.kostenbeteiligung.v1.schema.ReadKostenbeteiligungenResponse
 import com.adcubum.syrius.api.schadenleistungsmgmt.leistungserbringung.leistungsberechnung.data.kostenbeteiligung.v1.schema.WsKostenbeteiligungType
 import org.springframework.ws.WebServiceMessageFactory
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport
 import org.springframework.ws.client.support.interceptor.ClientInterceptor
-import java.util.*
+import java.util.GregorianCalendar
 import javax.xml.datatype.DatatypeFactory
 
 class ApiBridgeClient(webServiceMessageFactory: WebServiceMessageFactory, defaultUri: String, vararg clientInterceptor: ClientInterceptor) :
@@ -102,7 +100,6 @@ class ApiBridgeClient(webServiceMessageFactory: WebServiceMessageFactory, defaul
         }
         val partneridentifikatorRequest = GetPartneridentifikatorRequest(listOf(searchOnlineIdResponse.partneridentifikatorId), stichtag())
         return (webServiceTemplate.marshalSendAndReceive(partnerIdentifikatorService, partneridentifikatorRequest) as GetPartneridentifikatorResponse).partneridentifikators.firstOrNull()?.partnerId
-
     }
 
     fun getPartner(partnerId: WsPartnerIdType): WsPartnerType {
@@ -174,10 +171,7 @@ class ApiBridgeClient(webServiceMessageFactory: WebServiceMessageFactory, defaul
 
     fun getKostenbeteiligung(vararg partnerIds: com.adcubum.syrius.api.schadenleistungsmgmt.extern.partner.identifier.v1.WsPartnerIdType): List<WsKostenbeteiligungType> {
         val kostenbeteiligungenIdRequest = ReadKostenbeteiligungenOfGrundversicherungForPartnerRequest(listOf(*partnerIds), stichtag())
-        val kostenbeteiligungIdList = (webServiceTemplate.marshalSendAndReceive(kostenbeteiligungService, kostenbeteiligungenIdRequest) as ReadKostenbeteiligungenOfGrundversicherungForPartnerResponse).kostenbeteiligungGrundversicherungs
-
-        val kostenbeteiligungenRequest = ReadKostenbeteiligungenRequest(kostenbeteiligungIdList.map { it.id }, stichtag())
-        return (webServiceTemplate.marshalSendAndReceive(kostenbeteiligungService, kostenbeteiligungenRequest) as ReadKostenbeteiligungenResponse).kostenbeteiligungens
+        return (webServiceTemplate.marshalSendAndReceive(kostenbeteiligungService, kostenbeteiligungenIdRequest) as ReadKostenbeteiligungenOfGrundversicherungForPartnerResponse).kostenbeteiligungGrundversicherungs
     }
 
     fun getKollektivvertrag(vararg kollektivvertragId: WsKollektivvertragNamentlichIdType): List<WsKollektivvertragNamentlichType> {

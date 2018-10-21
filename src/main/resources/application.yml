@@ -10,6 +10,7 @@ api:
       - com.adcubum.syrius.api.partnermgmt.partnerdatenverw.data.partner.v1.schema
       - com.adcubum.syrius.api.partnermgmt.partnerdatenverw.data.partneridentifikator.v1.schema
       - com.adcubum.syrius.api.partnermgmt.partnerdatenverw.data.telefon.v1.schema
+      - com.adcubum.syrius.api.partnermgmt.partnerdatenverw.data.leistungserbringer.v1.schema
       - com.adcubum.syrius.api.produktmgmt.produktpflege.produktkatalog.data.produkt.v1.schema
       - com.adcubum.syrius.api.bestandsverw.vertragsverw.auskunft.data.vertrag.v1.schema
       - com.adcubum.syrius.api.bestandsverw.vertragsverw.auskunft.data.versichertesobjekt.v1.schema
@@ -30,6 +31,6 @@ webservices:
       password: changeit
       private-key-password: HkOFFGLOjEC8
 
-logging:
-  level:
-    org.springframework.ws.client.MessageTracing: TRACE
+#logging:
+#  level:
+#    org.springframework.ws.client.MessageTracing: TRACE
