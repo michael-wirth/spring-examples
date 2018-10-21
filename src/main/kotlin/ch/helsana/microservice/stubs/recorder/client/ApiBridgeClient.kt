@@ -62,10 +62,10 @@ import com.adcubum.syrius.api.schadenleistungsmgmt.leistungserbringung.leistungs
 import org.springframework.ws.WebServiceMessageFactory
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport
 import org.springframework.ws.client.support.interceptor.ClientInterceptor
-import java.util.GregorianCalendar
+import java.util.*
 import javax.xml.datatype.DatatypeFactory
 
-class ApiBridgeClient(webServiceMessageFactory: WebServiceMessageFactory, defaultUri: String, vararg clientInterceptor: ClientInterceptor) :
+open class ApiBridgeClient(webServiceMessageFactory: WebServiceMessageFactory, defaultUri: String, vararg clientInterceptor: ClientInterceptor) :
         WebServiceGatewaySupport(webServiceMessageFactory) {
 
     init {
