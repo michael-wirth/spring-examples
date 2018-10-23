@@ -32,8 +32,8 @@ class ApiBridgeAsyncClient(private val apiBridgeClient: ApiBridgeClient) {
     }
 
     @Async
-    fun getPartner(partnerId: WsPartnerIdType): CompletableFuture<WsPartnerType> {
-        return CompletableFuture.completedFuture(apiBridgeClient.getPartner(partnerId))
+    fun getPartner(vararg partnerId: WsPartnerIdType): CompletableFuture<List<WsPartnerType>> {
+        return CompletableFuture.completedFuture(apiBridgeClient.getPartner(*partnerId))
     }
 
     @Async

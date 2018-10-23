@@ -16,8 +16,8 @@ api:
       - com.adcubum.syrius.api.bestandsverw.vertragsverw.auskunft.data.versichertesobjekt.v1.schema
       - com.adcubum.syrius.api.bestandsverw.vertragsverw.auskunft.data.versichertenkarte.v1.schema
       - com.adcubum.syrius.api.schadenleistungsmgmt.leistungserbringung.leistungsberechnung.data.kostenbeteiligung.v1.schema
-    base-uri: http://apibridge.syrius-integration.hel.kko.ch/
-#    base-uri: http://apibridge.syrius-entwicklung.hel.kko.ch/
+    base-uri: http://apibridge.syrius-entwicklung.hel.kko.ch/
+#    base-uri: http://apibridge.syrius-integration.hel.kko.ch/
 #    base-uri: http://localhost:8080/
 
 webservices:
@@ -31,6 +31,21 @@ webservices:
       password: changeit
       private-key-password: HkOFFGLOjEC8
 
-#logging:
-#  level:
-#    org.springframework.ws.client.MessageTracing: TRACE
+  #logging:
+  #  level:
+  #    org.springframework.ws.client.MessageTracing: TRACE
+
+logging:
+  level:
+    ch:
+      helsana:
+        microservice:
+          stubs:
+            recorder:
+              client:
+                ApiBridgeClient: trace
+
+
+spring:
+  aop:
+    proxy-target-class: true
